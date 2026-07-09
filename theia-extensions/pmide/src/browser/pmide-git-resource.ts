@@ -1,7 +1,7 @@
 /********************************************************************************
  * PMIDE git resource — resolves pmide-git URIs to file contents at a git ref,
- * so Compare Changes opens the real editor diff against main/HEAD.
- * URI shape: pmide-git:/<repo-relative-path>?ref=<ref>
+ * so friendly diffs open the real editor diff against main/HEAD.
+ * URI shape: pmide-git:/<repo-relative-path>?ref=<ref>&repo=<abs-repo-path>
  * SPDX-License-Identifier: MIT
  ********************************************************************************/
 
@@ -12,8 +12,8 @@ import { PmideService } from '../common/protocol';
 
 export const PMIDE_GIT_SCHEME = 'pmide-git';
 
-export function refUri(repoRelativePath: string, ref: string): URI {
-    return new URI(`${PMIDE_GIT_SCHEME}:/${repoRelativePath}?ref=${encodeURIComponent(ref)}`);
+export function refUri(repoPath: string, repoRelativePath: string, ref: string): URI {
+    return new URI(`${PMIDE_GIT_SCHEME}:/${repoRelativePath}?ref=${encodeURIComponent(ref)}&repo=${encodeURIComponent(repoPath)}`);
 }
 
 @injectable()
@@ -27,12 +27,14 @@ export class PmideGitResourceResolver implements ResourceResolver {
             throw new Error('Not a pmide-git URI: ' + uri.toString());
         }
         const path = uri.path.toString().replace(/^\//, '');
-        const ref = new URLSearchParams(uri.query).get('ref') || 'HEAD';
+        const params = new URLSearchParams(uri.query);
+        const ref = params.get('ref') || 'HEAD';
+        const repo = params.get('repo') || '';
         const service = this.service;
         return {
             uri,
             async readContents(): Promise<string> {
-                const content = await service.readFileAtRef(path, ref);
+                const content = await service.readFileAtRef(repo, path, ref);
                 return content ?? '';
             },
             dispose(): void { /* nothing */ },

@@ -2,7 +2,7 @@
   "private": true,
   "name": "pmide-ext",
   "version": "1.73.100",
-  "description": "PMIDE — product-native IDE surfaces: context library, work packages, skills, agent runs, governance, golden demo flow",
+  "description": "PMIDE — the product-management IDE: Ask, Specs, Workflows, Code, and Context surfaces over linked repos, powered by Claude Code",
   "dependencies": {
     "@theia/core": "1.73.1",
     "@theia/filesystem": "1.73.1",
