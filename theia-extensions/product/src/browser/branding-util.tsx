@@ -9,7 +9,6 @@
 
 import { WindowService } from '@theia/core/lib/browser/window/window-service';
 import * as React from 'react';
-import { getBrandingVariant } from './theia-ide-config';
 
 export interface ExternalBrowserLinkProps {
     text: string;
@@ -18,9 +17,7 @@ export interface ExternalBrowserLinkProps {
 }
 
 export function renderProductName(): React.ReactNode {
-    const variant = getBrandingVariant();
-    const suffix = variant !== 'stable' ? ` ${variant.charAt(0).toUpperCase() + variant.slice(1)}` : '';
-    return <h1>Eclipse Theia <span className="gs-blue-header">IDE</span>{suffix}</h1>;
+    return <h1>PM<span className="gs-blue-header">IDE</span></h1>;
 }
 
 function BrowserLink(props: ExternalBrowserLinkProps): React.JSX.Element {
@@ -37,17 +34,16 @@ function BrowserLink(props: ExternalBrowserLinkProps): React.JSX.Element {
 export function renderWhatIs(windowService: WindowService): React.ReactNode {
     return <div className='gs-section'>
         <h3 className='gs-section-header'>
-            What is this?
+            The IDE rebuilt for product managers
         </h3>
         <div>
-            The Eclipse Theia IDE is a modern and open IDE for cloud and desktop. The Theia IDE is based on the <BrowserLink text="Theia platform"
-                url="https://theia-ide.org" windowService={windowService} ></BrowserLink>.
+            PMIDE puts product managers, engineers, and AI agents in the same repository.
+            Manage governed context, generate agent-ready Work Packages, create reusable skills,
+            work safely on draft branches, and review product intent — all inside a real IDE.
         </div>
         <div>
-            The IDE is available as a <BrowserLink text="downloadable desktop application" url="https://theia-ide.org//#theiaidedownload"
-                windowService={windowService} ></BrowserLink>. You can also <BrowserLink text="try the latest version of the Theia IDE online"
-                    url="https://try.theia-cloud.io/" windowService={windowService} ></BrowserLink>. The online test version is limited to 30 minutes per session and hosted
-            via <BrowserLink text="Theia Cloud" url="https://theia-cloud.io/" windowService={windowService} ></BrowserLink>.
+            The core value is not that PMs can code. It is that PMs can manage the context and
+            agentic work system that increasingly determines what code gets produced.
         </div>
     </div>;
 }
@@ -55,17 +51,16 @@ export function renderWhatIs(windowService: WindowService): React.ReactNode {
 export function renderExtendingCustomizing(windowService: WindowService): React.ReactNode {
     return <div className='gs-section'>
         <h3 className='gs-section-header'>
-            Extending/Customizing the Theia IDE
+            The golden flow (Demo Mode)
         </h3>
-        <div >
-            You can extend the Theia IDE at runtime by installing VS Code extensions, e.g. from the <BrowserLink text="OpenVSX registry" url="https://open-vsx.org/"
-                windowService={windowService} ></BrowserLink>, an open marketplace for VS Code extensions. Just open the extension view or browse <BrowserLink
-                    text="OpenVSX online" url="https://open-vsx.org/" windowService={windowService} ></BrowserLink>.
+        <div>
+            Planning session → context update → safe draft branch → skill creation → Work Package →
+            agent routing → code change → Product Intent Review → governed delivery.
         </div>
         <div>
-            Furthermore, the Theia IDE is based on the flexible Theia platform. Therefore, the Theia IDE can serve as a <span className='gs-text-bold'>template</span> for building
-            custom tools and IDEs. Browse <BrowserLink text="the documentation" url="https://theia-ide.org/docs/composing_applications/"
-                windowService={windowService} ></BrowserLink> to help you customize and build your own Eclipse Theia-based product.
+            The scripted walkthrough is <span className='gs-text-bold'>off by default</span>. Run
+            <code> PMIDE: Enable Demo Mode</code> from the command palette (F1) or the PMIDE menu to
+            bootstrap the demo workspace and walk the full flow. <code>PMIDE: Disable Demo Mode</code> turns it back off.
         </div>
     </div>;
 }
@@ -73,12 +68,12 @@ export function renderExtendingCustomizing(windowService: WindowService): React.
 export function renderSupport(windowService: WindowService): React.ReactNode {
     return <div className='gs-section'>
         <h3 className='gs-section-header'>
-            Professional Support
+            Safe by default
         </h3>
         <div>
-            Professional support, implementation services, consulting and training for building tools like Theia IDE and for building other tools based on Eclipse Theia is
-            available by selected companies as listed on the <BrowserLink text=" Theia support page" url="https://theia-ide.org/support/"
-                windowService={windowService} ></BrowserLink>.
+            You are always shown which branch you are on. Nothing changes in the shared product
+            until a safe draft branch is reviewed and approved. High-risk context, skills with
+            scripts, and agent runs all require explicit approval.
         </div>
     </div>;
 }
@@ -86,20 +81,11 @@ export function renderSupport(windowService: WindowService): React.ReactNode {
 export function renderTickets(windowService: WindowService): React.ReactNode {
     return <div className='gs-section'>
         <h3 className='gs-section-header'>
-            Reporting feature requests and bugs
+            Agents are governed teammates
         </h3>
-        <div >
-            The features in the Eclipse Theia IDE are based on Theia and the included
-            extensions/plugins. For bugs in Theia please consider opening an issue in
-            the <BrowserLink text="Theia project on Github" url="https://github.com/eclipse-theia/theia/issues/new/choose"
-                windowService={windowService} ></BrowserLink>.
-        </div>
         <div>
-            Eclipse Theia IDE only packages existing functionality into a product and installers
-            for the product. If you believe there is a mistake in packaging, something needs to be added to the
-            packaging or the installers do not work properly,
-            please <BrowserLink text="open an issue on Github" url="https://github.com/eclipse-theia/theia-ide/issues/new/choose"
-                windowService={windowService} ></BrowserLink> to let us know.
+            Every agent run records who initiated it, the context it saw, the skill it used, and
+            what changed — traceable from planning decision to pull request.
         </div>
     </div>;
 }
@@ -107,11 +93,13 @@ export function renderTickets(windowService: WindowService): React.ReactNode {
 export function renderSourceCode(windowService: WindowService): React.ReactNode {
     return <div className='gs-section'>
         <h3 className='gs-section-header'>
-            Source Code
+            Built on Eclipse Theia
         </h3>
-        <div >
-            The source code of Eclipse Theia IDE is available
-            on <BrowserLink text="Github" url="https://github.com/eclipse-theia/theia-ide"
+        <div>
+            PMIDE is built on the open-source <BrowserLink text="Eclipse Theia platform"
+                url="https://theia-ide.org" windowService={windowService} ></BrowserLink> —
+            not a fork of VS Code. It supports VS Code extensions via
+            the <BrowserLink text="Open VSX registry" url="https://open-vsx.org/"
                 windowService={windowService} ></BrowserLink>.
         </div>
     </div>;
@@ -120,11 +108,12 @@ export function renderSourceCode(windowService: WindowService): React.ReactNode 
 export function renderDocumentation(windowService: WindowService): React.ReactNode {
     return <div className='gs-section'>
         <h3 className='gs-section-header'>
-            Documentation
+            Context is the product artifact
         </h3>
-        <div >
-            Please see the <BrowserLink text="documentation" url="https://theia-ide.org/docs/user_getting_started/"
-                windowService={windowService} ></BrowserLink> on how to use the Theia IDE.
+        <div>
+            The Context Library treats business rules, domain glossaries, compliance rules, and
+            release constraints as version-controlled, owned, and reviewed assets — the inputs
+            that make agent output trustworthy.
         </div>
     </div>;
 }
@@ -132,14 +121,11 @@ export function renderDocumentation(windowService: WindowService): React.ReactNo
 export function renderCollaboration(windowService: WindowService): React.ReactNode {
     return <div className='gs-section'>
         <h3 className='gs-section-header'>
-            Collaboration
+            Product and engineering, same repo
         </h3>
-        <div >
-            The IDE features a built-in collaboration feature.
-            You can share your workspace with others and work together in real-time by clicking on the <i>Collaborate</i> item in the status bar.
-            The collaboration feature is powered by
-            the <BrowserLink text="Open Collaboration Tools" url="https://www.open-collab.tools/" windowService={windowService} /> project
-            and uses their public server infrastructure.
+        <div>
+            PMs review product intent. Engineers review code. Both happen on every proposed
+            change, and neither bypasses the other.
         </div>
     </div>;
 }
@@ -147,15 +133,14 @@ export function renderCollaboration(windowService: WindowService): React.ReactNo
 export function renderDownloads(): React.ReactNode {
     return <div className='gs-section'>
         <h3 className='gs-section-header'>
-            Updates and Downloads
+            Getting started
         </h3>
         <div className='gs-action-container'>
-            You can update Eclipse Theia IDE directly in this application by navigating to
-            File {'>'} Preferences {'>'} Check for Updates… Moreover the application will check for updates
-            after each launch automatically.
-        </div>
-        <div className='gs-action-container'>
-            Alternatively you can download the most recent version from the download page.
+            Open any folder to work normally — PMIDE is a full IDE with a real terminal, git,
+            debugging, and VS Code extensions from Open VSX. When you want the guided product-management
+            walkthrough, enable Demo Mode: it creates the <code>enterprise-sample-app</code> demo
+            repository (governed context, an approved skill, planning notes ready to import) in your
+            home folder and opens it.
         </div>
     </div>;
 }

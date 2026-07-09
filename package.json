@@ -43,7 +43,7 @@
     "build:applications:dev": "lerna run --scope=\"theia-ide*app\" --ignore=\"theia-ide-next*\" build --concurrency 1",
     "build:applications:next": "lerna run --scope=\"theia-ide-next*\" build:prod --concurrency 1",
     "build:applications:next:dev": "lerna run --scope=\"theia-ide-next*\" build --concurrency 1",
-    "build:extensions": "lerna run --scope=\"theia-ide*ext\" build",
+    "build:extensions": "lerna run --scope=\"theia-ide*ext\" --scope=\"pmide-ext\" build",
     "build:local-theia": "node scripts/build-with-local-theia.js",
     "download:plugins": "theia download:plugins --rate-limit=15 --parallel=false && yarn permissions:writeable",
     "package:applications": "lerna run --scope=\"theia-ide*app\" --ignore=\"theia-ide-next*\" package --concurrency 1",
@@ -92,5 +92,8 @@
     "**/perfect-scrollbar": "1.5.5",
     "**/node-abi": "4.14.0",
     "**/yauzl": "^3.3.1"
+  },
+  "optionalDependencies": {
+    "@vscode/windows-ca-certs": "^0.3.0"
   }
 }

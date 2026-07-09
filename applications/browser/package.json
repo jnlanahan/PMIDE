@@ -21,10 +21,11 @@
   "theia": {
     "frontend": {
       "config": {
-        "applicationName": "Theia IDE",
+        "applicationName": "PMIDE",
         "warnOnPotentiallyInsecureHostPattern": false,
         "preferences": {
           "toolbar.showToolbar": true,
+          "workbench.colorTheme": "dark",
           "files.enableTrash": false,
           "security.workspace.trust.enabled": false
         },
@@ -119,6 +120,7 @@
     "@theia/workspace": "1.73.1",
     "fs-extra": "^9.1.0",
     "react": "^18.3.1",
+    "pmide-ext": "1.73.100",
     "react-dom": "^18.3.1",
     "theia-ide-product-ext": "1.73.100"
   },
