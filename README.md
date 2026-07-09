@@ -1,7 +1,17 @@
 # PMIDE — the IDE rebuilt for product managers
 
-A native desktop IDE built on the Eclipse Theia Platform. Built from the
-requirements in `pmide_requirements_md/`.
+A native desktop IDE built on the Eclipse Theia Platform.
+
+## Current vision (v2)
+
+- **[docs/build-brief.md](docs/build-brief.md)** — the current product vision:
+  Claude Code as the engine, Ask as the single-player wedge, a context router,
+  six surfaces, light/editorial design.
+- **[docs/build-plan.md](docs/build-plan.md)** — the phased roadmap to build it.
+- **[docs/v1-to-v2-delta.md](docs/v1-to-v2-delta.md)** — what changed from v1
+  and why.
+- `archive/requirements-v1/` — the superseded v1 requirements set, kept for the
+  record (each file carries an OBSOLETE banner).
 
 ## How to run PMIDE
 
@@ -42,5 +52,6 @@ Enable it: Settings → search "AI features" → enable → add your Anthropic A
 | `S:\pmide-theia\` | PMIDE source (Theia workspace); see `PMIDE.md` there for developer docs |
 | `S:\pmide-theia\applications\electron\dist\` | Build output: `PMIDESetup.exe` + `win-unpacked\PMIDE.exe` |
 | `%LOCALAPPDATA%\Programs\PMIDE\` | Installed app location |
-| `pmide_requirements_md/` | The original requirements document set |
-| `archive/` | The earlier zero-install browser mock-up + build screenshots (kept for reference; open `archive/browser-mockup/index.html` in a browser) |
+| `docs/` | The current v2 vision, delta, and build plan |
+| `archive/requirements-v1/` | The original (obsolete) v1 requirements document set |
+| `archive/` | Also holds the earlier zero-install browser mock-up + build screenshots (kept for reference; open `archive/browser-mockup/index.html` in a browser) |

@@ -1,3 +1,5 @@
+> **OBSOLETE (2026-07-08).** This document describes the original PMIDE vision and is kept for the record only. It is superseded by [docs/build-brief.md](../../docs/build-brief.md). See [docs/v1-to-v2-delta.md](../../docs/v1-to-v2-delta.md) for what changed.
+
 # PMIDE Roadmap, Risks, and Open Decisions
 
 ## 1. Roadmap Overview
