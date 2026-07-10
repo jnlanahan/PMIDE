@@ -15,6 +15,8 @@ import * as fs from 'fs';
 import * as os from 'os';
 import * as path from 'path';
 
+import { SpaceFacts } from '../common/protocol';
+
 export interface SearchHit {
     /** Absolute path of the source file. */
     file: string;
@@ -26,14 +28,6 @@ export interface SearchHit {
     section?: string;
     score: number;
     excerpt: string;
-}
-
-export interface SpaceFacts {
-    roots: Array<{ path: string; documents: number }>;
-    documents: number;
-    chunks: number;
-    byExtension: Record<string, number>;
-    builtAt: string;
 }
 
 interface Chunk {

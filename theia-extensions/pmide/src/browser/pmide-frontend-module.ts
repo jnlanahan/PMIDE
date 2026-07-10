@@ -3,15 +3,35 @@
  * SPDX-License-Identifier: MIT
  ********************************************************************************/
 
-import { ResourceResolver } from '@theia/core';
+import { CommandContribution, MenuContribution, ResourceResolver } from '@theia/core';
+import { FrontendApplicationContribution, WidgetFactory } from '@theia/core/lib/browser';
 import { RemoteConnectionProvider, ServiceConnectionProvider } from '@theia/core/lib/browser/messaging/service-connection-provider';
-import { ContainerModule } from '@theia/core/shared/inversify';
+import { bindViewContribution } from '@theia/core/lib/browser/shell/view-contribution';
+import { ContainerModule, interfaces } from '@theia/core/shared/inversify';
 import { PMIDE_AGENT_SERVICE_PATH, PmideAgentClient, PmideAgentService } from '../common/agent-protocol';
 import { PMIDE_SERVICE_PATH, PmideService } from '../common/protocol';
 import { PmideAgentClientImpl, PmideAgentFrontend } from './pmide-agent-frontend';
+import { PmideAskWidget } from './pmide-ask-widget';
 import { PmideGitResourceResolver } from './pmide-git-resource';
+import { PmideSpaceService } from './pmide-space';
+import {
+    PmideAskViewContribution, PmideCodeViewContribution, PmideCodeWidget,
+    PmideContextViewContribution, PmideContextWidget, PmideHomeViewContribution,
+    PmideHomeWidget, PmideSpecsViewContribution, PmideSpecsWidget,
+    PmideSurfacesFrontendContribution, PmideWorkflowsViewContribution, PmideWorkflowsWidget,
+} from './pmide-surfaces';
 
 import '../../src/browser/style/pmide.css';
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function bindSurface(bind: interfaces.Bind, widget: { ID: string } & (new (...args: any[]) => any), view: new () => any): void {
+    bindViewContribution(bind, view);
+    bind(widget).toSelf();
+    bind(WidgetFactory).toDynamicValue(ctx => ({
+        id: widget.ID,
+        createWidget: () => ctx.container.get(widget),
+    })).inSingletonScope();
+}
 
 export default new ContainerModule(bind => {
     // Repo-scoped git backend proxy
@@ -32,4 +52,21 @@ export default new ContainerModule(bind => {
         return connection.createProxy<PmideAgentService>(PMIDE_AGENT_SERVICE_PATH, client);
     }).inSingletonScope();
     bind(PmideAgentFrontend).toSelf().inSingletonScope();
+
+    // Product Space
+    bind(PmideSpaceService).toSelf().inSingletonScope();
+
+    // The six surfaces
+    bindSurface(bind, PmideHomeWidget, PmideHomeViewContribution);
+    bindSurface(bind, PmideAskWidget, PmideAskViewContribution);
+    bindSurface(bind, PmideSpecsWidget, PmideSpecsViewContribution);
+    bindSurface(bind, PmideWorkflowsWidget, PmideWorkflowsViewContribution);
+    bindSurface(bind, PmideCodeWidget, PmideCodeViewContribution);
+    bindSurface(bind, PmideContextWidget, PmideContextViewContribution);
+
+    // Startup attachment + commands + menu
+    bind(PmideSurfacesFrontendContribution).toSelf().inSingletonScope();
+    bind(FrontendApplicationContribution).toService(PmideSurfacesFrontendContribution);
+    bind(CommandContribution).toService(PmideSurfacesFrontendContribution);
+    bind(MenuContribution).toService(PmideSurfacesFrontendContribution);
 });

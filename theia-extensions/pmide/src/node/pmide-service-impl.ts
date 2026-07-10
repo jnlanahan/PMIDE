@@ -3,14 +3,22 @@
  * SPDX-License-Identifier: MIT
  ********************************************************************************/
 
-import { injectable } from '@theia/core/shared/inversify';
+import { inject, injectable } from '@theia/core/shared/inversify';
 import { spawn } from 'child_process';
 import * as fs from 'fs';
 import * as path from 'path';
-import { ChangedFile, GitResult, PmideService } from '../common/protocol';
+import { ChangedFile, GitResult, PmideService, SpaceFacts } from '../common/protocol';
+import { PmideSpaceIndex } from './pmide-space-index';
 
 @injectable()
 export class PmideServiceImpl implements PmideService {
+
+    @inject(PmideSpaceIndex)
+    protected readonly index: PmideSpaceIndex;
+
+    async indexFacts(roots: string[]): Promise<SpaceFacts> {
+        return this.index.facts(roots);
+    }
 
     protected runGit(repoPath: string, args: string[]): Promise<GitResult> {
         if (!repoPath || !fs.existsSync(repoPath)) {

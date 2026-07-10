@@ -132,8 +132,17 @@ export class PmideAgentServiceImpl implements PmideAgentService {
     protected resolveSdkPath(): string {
         const candidates: string[] = [];
         try {
-            candidates.push(path.dirname(require.resolve('@anthropic-ai/claude-agent-sdk/package.json')));
+            // The SDK's exports map exposes only the entry point; resolve it
+            // and take its directory. (…/package.json is not exported.)
+            candidates.push(path.dirname(require.resolve('@anthropic-ai/claude-agent-sdk')));
         } catch { /* not in module paths */ }
+        // Fallback: walk up from this file looking for node_modules copies
+        // (covers unusual packagings where require paths are rewritten).
+        let dir = __dirname;
+        for (let i = 0; i < 6; i++) {
+            candidates.push(path.join(dir, 'node_modules', '@anthropic-ai', 'claude-agent-sdk'));
+            dir = path.dirname(dir);
+        }
         for (const candidate of candidates) {
             if (existsSync(path.join(candidate, 'sdk.mjs'))) {
                 return candidate;

@@ -103,6 +103,58 @@
 .pmide-root code { font-family: var(--pm-mono); font-size: 12px; background: var(--pm-inset); padding: 1px 5px; border-radius: 4px; color: var(--pm-brand-bright); }
 .pmide-root pre.mono-block { background: var(--pm-inset); border: 1px solid var(--pm-border); border-radius: 6px; padding: 12px 14px; font-family: var(--pm-mono); font-size: 12px; white-space: pre-wrap; }
 
+/* ─────── Ask surface ─────── */
+.pmide-ask { display: flex; flex-direction: column; height: 100%; }
+.pmide-ask .ask-conversation { flex: 1; overflow-y: auto; padding: 14px 14px 6px; display: flex; flex-direction: column; gap: 12px; }
+.pmide-ask .ask-empty { margin: auto 8px; text-align: center; padding: 30px 10px; }
+.pmide-ask .ask-empty-title { font-size: 16px; font-weight: 650; color: var(--pm-text-bright); margin-bottom: 8px; }
+.pmide-ask .ask-empty-body { font-size: 12.5px; color: var(--pm-text-dim); line-height: 1.6; max-width: 340px; margin: 0 auto; }
+.pmide-ask .ask-q { align-self: flex-end; max-width: 92%; background: var(--pm-brand-bg); border: 1px solid rgba(124,140,248,0.25); border-radius: 12px 12px 3px 12px; padding: 8px 12px; font-size: 13px; white-space: pre-wrap; }
+.pmide-ask .ask-a { align-self: stretch; font-size: 13px; line-height: 1.65; }
+.pmide-ask .ask-status { color: var(--pm-text-dim); font-size: 12px; font-style: italic; padding: 2px 0 6px; }
+.pmide-ask .ask-answer { white-space: normal; overflow-wrap: break-word; }
+.pmide-ask .ask-cite {
+  display: inline-flex; align-items: center; gap: 4px; margin: 0 3px; padding: 1px 8px 1px 5px;
+  border: 1px solid rgba(124,140,248,0.35); border-radius: 10px; background: var(--pm-brand-bg);
+  color: var(--pm-brand-bright); font-size: 11px; font-family: var(--pm-mono); cursor: pointer;
+  vertical-align: baseline; white-space: nowrap;
+}
+.pmide-ask .ask-cite:hover { background: rgba(124,140,248,0.22); }
+.pmide-ask .ask-cite .codicon { font-size: 11px; }
+.pmide-ask .ask-drift {
+  margin-top: 12px; padding: 10px 13px; border-radius: 9px;
+  background: var(--pm-warn-bg); border: 1px solid rgba(229,181,103,0.35);
+}
+.pmide-ask .ask-drift-title { font-weight: 650; font-size: 12.5px; color: var(--pm-warn); margin-bottom: 5px; }
+.pmide-ask .ask-drift-line { font-size: 12.5px; padding: 2px 0; }
+.pmide-ask .ask-error { margin-top: 8px; padding: 9px 12px; border-radius: 8px; background: var(--pm-danger-bg); border: 1px solid rgba(229,118,107,0.35); font-size: 12.5px; }
+.pmide-ask .ask-footer { display: flex; gap: 8px; padding: 10px 12px 12px; border-top: 1px solid var(--pm-border); align-items: flex-end; }
+.pmide-ask .ask-input {
+  flex: 1; resize: none; background: var(--theia-input-background);
+  border: 1px solid var(--theia-input-border, var(--pm-border)); border-radius: 8px;
+  padding: 8px 11px; color: var(--theia-input-foreground); font-size: 13px; font-family: inherit; line-height: 1.5;
+}
+.pmide-ask .ask-send {
+  border: none; border-radius: 8px; background: var(--pm-brand); color: #0e1015;
+  font-weight: 650; font-size: 12.5px; padding: 8px 16px; cursor: pointer;
+}
+.pmide-ask .ask-send:hover { background: var(--pm-brand-bright); }
+
+/* ─────── Context surface ─────── */
+.pmide-side .ctx-health { display: flex; align-items: center; gap: 7px; padding: 6px 16px; font-size: 12.5px; }
+.pmide-side .ctx-health .dot { width: 8px; height: 8px; border-radius: 50%; }
+.pmide-side .ctx-health.ok .dot { background: var(--pm-ok); }
+.pmide-side .ctx-health.bad .dot { background: var(--pm-danger); }
+.pmide-side .ctx-note { padding: 4px 16px 6px; font-size: 11.5px; color: var(--pm-text-dim); line-height: 1.5; }
+.pmide-side .ctx-actions { padding: 8px 16px; }
+.pmide-side .ctx-tag { font-size: 9px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--pm-brand-bright); background: var(--pm-brand-bg); padding: 1px 6px; border-radius: 3px; }
+
+/* ─────── placeholder surfaces ─────── */
+.pmide-placeholder { padding: 26px 18px; text-align: center; }
+.pmide-placeholder .ph-title { font-size: 15px; font-weight: 650; color: var(--pm-text-bright); margin-bottom: 8px; }
+.pmide-placeholder .ph-body { font-size: 12.5px; color: var(--pm-text-dim); line-height: 1.6; }
+.pmide-placeholder .ph-phase { margin-top: 14px; font-size: 11px; color: var(--pm-brand-bright); background: var(--pm-brand-bg); display: inline-block; padding: 2px 10px; border-radius: 10px; }
+
 /* ─────── PMIDE dialogs (extend Theia dialog) ─────── */
 .pmide-dialog .dialogBlock { max-width: 860px; width: 90vw; }
 .pmide-dialog.narrow .dialogBlock { max-width: 560px; }

@@ -20,6 +20,14 @@ export interface ChangedFile {
     status: 'M' | 'A' | 'D';
 }
 
+export interface SpaceFacts {
+    roots: Array<{ path: string; documents: number }>;
+    documents: number;
+    chunks: number;
+    byExtension: Record<string, number>;
+    builtAt: string;
+}
+
 export interface PmideService {
     /** Run git with the given args in the given repo working tree. */
     git(repoPath: string, args: string[]): Promise<GitResult>;
@@ -37,4 +45,6 @@ export interface PmideService {
     commitAll(repoPath: string, message: string): Promise<GitResult>;
     /** Recent commits on current branch: `sha subject` lines. */
     log(repoPath: string, maxCount: number): Promise<string[]>;
+    /** What the space index knows about these roots (builds/refreshes it). */
+    indexFacts(roots: string[]): Promise<SpaceFacts>;
 }
