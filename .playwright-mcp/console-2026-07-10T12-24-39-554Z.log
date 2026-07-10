@@ -1,7 +1,0 @@
-[      63ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ http://localhost:3771/:0
-[      69ms] [INFO] sending initial connect on X-qS4cWY_PtQsMVbAAAB @ http://localhost:3771/bundle.js:72134
-[      75ms] [INFO] initial connect received on X-qS4cWY_PtQsMVbAAAB @ http://localhost:3771/bundle.js:72129
-[      97ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ http://localhost:3771/bundle.js:239268
-[     299ms] [INFO] 2026-07-10T12:24:39.852Z root INFO Detected keyboard layout from browser API: US (PC) @ http://localhost:3771/bundle.js:192886
-[     533ms] [WARNING] 2026-07-10T12:24:40.087Z root WARN Linked preference "workbench.colorCustomizations" not found. @ http://localhost:3771/bundle.js:192886
-[     533ms] [WARNING] 2026-07-10T12:24:40.087Z root WARN Linked preference "editor.experimental.preferTreeSitter" not found. @ http://localhost:3771/bundle.js:192886
