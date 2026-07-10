@@ -7,6 +7,7 @@
 
 import { Command, CommandContribution, CommandRegistry, MAIN_MENU_BAR, MenuContribution, MenuModelRegistry } from '@theia/core';
 import { AbstractViewContribution, FrontendApplication, FrontendApplicationContribution, codicon } from '@theia/core/lib/browser';
+import { FrontendApplicationStateService } from '@theia/core/lib/browser/frontend-application-state';
 import { inject, injectable, postConstruct } from '@theia/core/shared/inversify';
 import { PmideService, SpaceFacts } from '../common/protocol';
 import { PmideAgentFrontend } from './pmide-agent-frontend';
@@ -229,6 +230,7 @@ export class PmideContextViewContribution extends PmideSurfaceContribution<Pmide
 export class PmideSurfacesFrontendContribution implements FrontendApplicationContribution, CommandContribution, MenuContribution {
 
     @inject(PmideSpaceService) protected readonly spaces: PmideSpaceService;
+    @inject(FrontendApplicationStateService) protected readonly stateService: FrontendApplicationStateService;
     @inject(PmideAskViewContribution) protected readonly askView: PmideAskViewContribution;
     @inject(PmideHomeViewContribution) protected readonly homeView: PmideHomeViewContribution;
     @inject(PmideSpecsViewContribution) protected readonly specsView: PmideSpecsViewContribution;
@@ -238,15 +240,27 @@ export class PmideSurfacesFrontendContribution implements FrontendApplicationCon
 
     async onDidInitializeLayout(app: FrontendApplication): Promise<void> {
         // Dock the six surfaces so their icons live in the activity bar.
-        await this.homeView.openView();
-        await this.askView.openView();
-        await this.specsView.openView();
-        await this.workflowsView.openView();
-        await this.codeView.openView();
-        await this.contextView.openView();
-        // Restore linked repos recorded in the product repo, then land on Ask.
-        await this.spaces.restoreLinks();
-        await this.askView.openView({ activate: true });
+        // NEVER activate here: activation awaits focus, focus awaits the shell
+        // reveal, and the reveal awaits this hook — a startup deadlock.
+        try {
+            await this.homeView.openView();
+            await this.askView.openView();
+            await this.specsView.openView();
+            await this.workflowsView.openView();
+            await this.codeView.openView();
+            await this.contextView.openView();
+        } catch (e) {
+            console.error('PMIDE: docking surfaces failed', e);
+        }
+        // Once the app is fully ready: restore linked repos and land on Ask.
+        this.stateService.reachedState('ready').then(async () => {
+            try {
+                await this.spaces.restoreLinks();
+                await this.askView.openView({ activate: true });
+            } catch (e) {
+                console.error('PMIDE: post-ready setup failed', e);
+            }
+        });
     }
 
     registerCommands(registry: CommandRegistry): void {
