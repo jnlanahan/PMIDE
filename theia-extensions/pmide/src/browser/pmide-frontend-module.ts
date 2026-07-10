@@ -14,6 +14,7 @@ import { PmideAgentClientImpl, PmideAgentFrontend } from './pmide-agent-frontend
 import { PmideAskWidget } from './pmide-ask-widget';
 import { PmideGitResourceResolver } from './pmide-git-resource';
 import { PmideSpaceService } from './pmide-space';
+import { PmideThemeContribution } from './pmide-theme';
 import {
     PmideAskViewContribution, PmideCodeViewContribution, PmideCodeWidget,
     PmideContextViewContribution, PmideContextWidget, PmideHomeViewContribution,
@@ -69,4 +70,8 @@ export default new ContainerModule(bind => {
     bind(FrontendApplicationContribution).toService(PmideSurfacesFrontendContribution);
     bind(CommandContribution).toService(PmideSurfacesFrontendContribution);
     bind(MenuContribution).toService(PmideSurfacesFrontendContribution);
+
+    // PMIDE Light theme
+    bind(PmideThemeContribution).toSelf().inSingletonScope();
+    bind(FrontendApplicationContribution).toService(PmideThemeContribution);
 });

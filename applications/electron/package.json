@@ -1,7 +1,7 @@
-{
+﻿{
   "private": true,
   "name": "theia-ide-electron-app",
-  "description": "PMIDE — the IDE rebuilt for product managers",
+  "description": "PMIDE â€” the IDE rebuilt for product managers",
   "productName": "PMIDE",
   "version": "1.73.100",
   "main": "scripts/theia-electron-main.js",
@@ -27,7 +27,7 @@
         "reloadOnReconnect": true,
         "preferences": {
           "toolbar.showToolbar": true,
-          "workbench.colorTheme": "dark"
+          "workbench.colorTheme": "pmide-light"
         },
         "electron": {
           "showWindowEarly": false,

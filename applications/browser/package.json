@@ -1,4 +1,4 @@
-{
+﻿{
   "private": true,
   "name": "theia-ide-browser-app",
   "description": "Eclipse Theia IDE browser product",
@@ -25,7 +25,7 @@
         "warnOnPotentiallyInsecureHostPattern": false,
         "preferences": {
           "toolbar.showToolbar": true,
-          "workbench.colorTheme": "dark",
+          "workbench.colorTheme": "pmide-light",
           "files.enableTrash": false,
           "security.workspace.trust.enabled": false
         },

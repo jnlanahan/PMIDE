@@ -4,10 +4,12 @@
    The v2 editorial layer builds on top of this (theming track).
    ═══════════════════════════════════════════════════════════════ */
 
+/* Signature accent: PMIDE copper. One accent, few roles — the product mark,
+   the primary action, and connective moments (citations, links, drift). */
 .pmide-root {
-  --pm-brand: #7c8cf8;
-  --pm-brand-bright: #9daafc;
-  --pm-brand-bg: rgba(124, 140, 248, 0.12);
+  --pm-brand: #b4551d;
+  --pm-brand-bright: #d97a3e;
+  --pm-brand-bg: rgba(180, 85, 29, 0.10);
   --pm-safe: #2fbf9b;
   --pm-safe-bright: #55d9b8;
   --pm-safe-bg: rgba(47, 191, 155, 0.13);
@@ -29,8 +31,12 @@
   --pm-text-dim: var(--theia-descriptionForeground);
   --pm-mono: var(--theia-code-font-family, Consolas, monospace);
 
+  /* Editorial voice: humanist sans for reading, a serif face for headings. */
+  --pm-reader: 'Segoe UI Variable Text', 'Segoe UI', 'Trebuchet MS', system-ui, sans-serif;
+  --pm-voice: Georgia, 'Iowan Old Style', 'Palatino Linotype', serif;
+
   color: var(--pm-text);
-  font-family: var(--theia-ui-font-family);
+  font-family: var(--pm-reader);
   font-size: 13px;
   line-height: 1.5;
   height: 100%;
@@ -45,7 +51,7 @@
   border: 1px solid transparent; border-radius: 7px; cursor: pointer;
   padding: 5px 14px; font-size: 12.5px; font-weight: 600; background: transparent;
 }
-.pmide-root .btn.primary { background: var(--pm-brand); color: #0e1015; }
+.pmide-root .btn.primary { background: var(--pm-brand); color: #ffffff; }
 .pmide-root .btn.primary:hover { background: var(--pm-brand-bright); }
 .pmide-root .btn.safe { background: var(--pm-safe); color: #0e1015; }
 .pmide-root .btn.safe:hover { background: var(--pm-safe-bright); }
@@ -107,7 +113,7 @@
 .pmide-ask { display: flex; flex-direction: column; height: 100%; }
 .pmide-ask .ask-conversation { flex: 1; overflow-y: auto; padding: 14px 14px 6px; display: flex; flex-direction: column; gap: 12px; }
 .pmide-ask .ask-empty { margin: auto 8px; text-align: center; padding: 30px 10px; }
-.pmide-ask .ask-empty-title { font-size: 16px; font-weight: 650; color: var(--pm-text-bright); margin-bottom: 8px; }
+.pmide-ask .ask-empty-title { font-family: var(--pm-voice); font-size: 19px; font-weight: 600; color: var(--pm-text-bright); margin-bottom: 8px; letter-spacing: -0.01em; }
 .pmide-ask .ask-empty-body { font-size: 12.5px; color: var(--pm-text-dim); line-height: 1.6; max-width: 340px; margin: 0 auto; }
 .pmide-ask .ask-q { align-self: flex-end; max-width: 92%; background: var(--pm-brand-bg); border: 1px solid rgba(124,140,248,0.25); border-radius: 12px 12px 3px 12px; padding: 8px 12px; font-size: 13px; white-space: pre-wrap; }
 .pmide-ask .ask-a { align-self: stretch; font-size: 13px; line-height: 1.65; }
@@ -135,7 +141,7 @@
   padding: 8px 11px; color: var(--theia-input-foreground); font-size: 13px; font-family: inherit; line-height: 1.5;
 }
 .pmide-ask .ask-send {
-  border: none; border-radius: 8px; background: var(--pm-brand); color: #0e1015;
+  border: none; border-radius: 8px; background: var(--pm-brand); color: #ffffff;
   font-weight: 650; font-size: 12.5px; padding: 8px 16px; cursor: pointer;
 }
 .pmide-ask .ask-send:hover { background: var(--pm-brand-bright); }
@@ -151,7 +157,7 @@
 
 /* ─────── placeholder surfaces ─────── */
 .pmide-placeholder { padding: 26px 18px; text-align: center; }
-.pmide-placeholder .ph-title { font-size: 15px; font-weight: 650; color: var(--pm-text-bright); margin-bottom: 8px; }
+.pmide-placeholder .ph-title { font-family: var(--pm-voice); font-size: 17px; font-weight: 600; color: var(--pm-text-bright); margin-bottom: 8px; letter-spacing: -0.01em; }
 .pmide-placeholder .ph-body { font-size: 12.5px; color: var(--pm-text-dim); line-height: 1.6; }
 .pmide-placeholder .ph-phase { margin-top: 14px; font-size: 11px; color: var(--pm-brand-bright); background: var(--pm-brand-bg); display: inline-block; padding: 2px 10px; border-radius: 10px; }
 
