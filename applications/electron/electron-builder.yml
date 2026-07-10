@@ -26,9 +26,19 @@ files:
 extraResources:
   - from: ../../plugins
     to: app/plugins
+  # Bundled Claude engine: PMs never need a global npm install.
+  # Laid out as a real node_modules tree so the SDK resolves its platform
+  # binary (and PMIDE resolves zod) with standard module resolution.
+  - from: ../../node_modules/@anthropic-ai/claude-agent-sdk
+    to: app/pmide-engine/node_modules/@anthropic-ai/claude-agent-sdk
+  - from: ../../node_modules/zod
+    to: app/pmide-engine/node_modules/zod
 
 win:
   icon: resources/icons/WindowsLauncherIcons/PMIDE.ico
+  extraResources:
+    - from: ../../node_modules/@anthropic-ai/claude-agent-sdk-win32-x64
+      to: app/pmide-engine/node_modules/@anthropic-ai/claude-agent-sdk-win32-x64
   target:
     - nsis
 mac:

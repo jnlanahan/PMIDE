@@ -136,6 +136,15 @@ export class PmideAgentServiceImpl implements PmideAgentService {
             // and take its directory. (…/package.json is not exported.)
             candidates.push(path.dirname(require.resolve('@anthropic-ai/claude-agent-sdk')));
         } catch { /* not in module paths */ }
+        // Packaged app: the engine ships as an extraResource next to the asar.
+        // Backend runs from <resources>/app.asar/lib/backend — resources is 3 up.
+        const sdkSubPath = path.join('app', 'pmide-engine', 'node_modules', '@anthropic-ai', 'claude-agent-sdk');
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const resourcesPath: string | undefined = (process as any).resourcesPath;
+        if (resourcesPath) {
+            candidates.push(path.join(resourcesPath, sdkSubPath));
+        }
+        candidates.push(path.join(__dirname, '..', '..', '..', sdkSubPath));
         // Fallback: walk up from this file looking for node_modules copies
         // (covers unusual packagings where require paths are rewritten).
         let dir = __dirname;
