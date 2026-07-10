@@ -1,8 +1,8 @@
 # PMIDE v2 Build Plan
 
 > **Date:** 2026-07-08
-> **Status:** Current roadmap for building [build-brief.md](build-brief.md). Grounded in the actual Theia codebase at `S:\pmide-theia`.
-> Work happens in the app repo (`S:\pmide-theia`); this document is the reference plan. Phase 0 starts when the user kicks it off.
+> **Status:** Current roadmap for building [build-brief.md](build-brief.md). Grounded in the actual Theia codebase at `S:\Vibe Coding Folder\pmide-theia`.
+> Work happens in the app repo (`S:\Vibe Coding Folder\pmide-theia`); this document is the reference plan. Phase 0 starts when the user kicks it off.
 
 ## Grounding facts (verified in the codebase)
 

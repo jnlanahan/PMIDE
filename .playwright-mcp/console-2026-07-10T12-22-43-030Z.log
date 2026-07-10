@@ -1,0 +1,5 @@
+[   88453ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3771/socket.io/?EIO=4&transport=polling&t=wqm613ia:0
+[   92581ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3771/socket.io/?EIO=4&transport=polling&t=wqpcs485:0
+[   97282ms] [ERROR] Failed to load resource: the server responded with a status of 403 (Forbidden) @ http://localhost:3771/socket.io/?EIO=4&transport=polling&t=wqt676ls:0
+[  103677ms] [ERROR] Failed to load resource: the server responded with a status of 403 (Forbidden) @ http://localhost:3771/socket.io/?EIO=4&transport=polling&t=wqzpr9ae:0
+[  113999ms] [ERROR] Failed to load resource: the server responded with a status of 403 (Forbidden) @ http://localhost:3771/socket.io/?EIO=4&transport=polling&t=wr7fvhah:0

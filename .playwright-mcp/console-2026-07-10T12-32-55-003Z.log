@@ -1,0 +1,98 @@
+[     923ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ http://localhost:3771/:0
+[     924ms] [INFO] sending initial connect on acdf8ArcxZMY_-_OAAAB @ http://localhost:3771/bundle.js:72134
+[     929ms] [INFO] initial connect received on acdf8ArcxZMY_-_OAAAB @ http://localhost:3771/bundle.js:72129
+[     986ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ http://localhost:3771/bundle.js:239271
+[    1340ms] [INFO] 2026-07-10T12:32:56.343Z root INFO Detected keyboard layout from browser API: US (PC) @ http://localhost:3771/bundle.js:192889
+[    1405ms] [INFO] 2026-07-10T12:32:56.407Z SkillService INFO Loaded 1 skills @ http://localhost:3771/bundle.js:192889
+[    1417ms] [INFO] 2026-07-10T12:32:56.419Z root INFO Start frontend contributions: 190.8 ms [1.409 s since frontend page start] @ http://localhost:3771/bundle.js:192889
+[    1417ms] [INFO] 2026-07-10T12:32:56.420Z root INFO Changed application state from 'init' to 'started_contributions'. @ http://localhost:3771/bundle.js:192889
+[    1422ms] [INFO] 2026-07-10T12:32:56.425Z root INFO [525ef970-361e-47e3-aa2d-19900e9a9a9c] Waiting for backend deployment: 9.5 ms [1.418 s since frontend page start] @ http://localhost:3771/bundle.js:192889
+[    1430ms] [INFO] 2026-07-10T12:32:56.432Z root INFO Changed application state from 'started_contributions' to 'attached_shell'. @ http://localhost:3771/bundle.js:192889
+[    1430ms] [INFO] 2026-07-10T12:32:56.432Z root INFO >>> Restoring the layout state... @ http://localhost:3771/bundle.js:192889
+[    1442ms] [WARNING] 2026-07-10T12:32:56.444Z root WARN Couldn't restore widget for pmide-governance-view. Error: Error: No widget factory 'pmide-governance-view' has been registered.  @ http://localhost:3771/bundle.js:192889
+[    1442ms] [WARNING] 2026-07-10T12:32:56.445Z root WARN Couldn't restore widget for pmide-releases-view. Error: Error: No widget factory 'pmide-releases-view' has been registered.  @ http://localhost:3771/bundle.js:192889
+[    1442ms] [WARNING] 2026-07-10T12:32:56.445Z root WARN Couldn't restore widget for pmide-prs-view. Error: Error: No widget factory 'pmide-prs-view' has been registered.  @ http://localhost:3771/bundle.js:192889
+[    1442ms] [WARNING] 2026-07-10T12:32:56.445Z root WARN Couldn't restore widget for pmide-runs-view. Error: Error: No widget factory 'pmide-runs-view' has been registered.  @ http://localhost:3771/bundle.js:192889
+[    1442ms] [WARNING] 2026-07-10T12:32:56.445Z root WARN Couldn't restore widget for pmide-skills-view. Error: Error: No widget factory 'pmide-skills-view' has been registered.  @ http://localhost:3771/bundle.js:192889
+[    1442ms] [WARNING] 2026-07-10T12:32:56.445Z root WARN Couldn't restore widget for pmide-wp-view. Error: Error: No widget factory 'pmide-wp-view' has been registered.  @ http://localhost:3771/bundle.js:192889
+[    1442ms] [WARNING] 2026-07-10T12:32:56.445Z root WARN Couldn't restore widget for pmide-context-view. Error: Error: No widget factory 'pmide-context-view' has been registered.  @ http://localhost:3771/bundle.js:192889
+[    1442ms] [WARNING] 2026-07-10T12:32:56.445Z root WARN Couldn't restore widget for pmide-panel. Error: Error: No widget factory 'pmide-panel' has been registered.  @ http://localhost:3771/bundle.js:192889
+[    1485ms] [INFO] 2026-07-10T12:32:56.487Z root INFO <<< The layout has been successfully restored. @ http://localhost:3771/bundle.js:192889
+[    1487ms] [INFO] 2026-07-10T12:32:56.489Z root INFO Initialize the workbench layout: 57.0 ms [1.481 s since frontend page start] @ http://localhost:3771/bundle.js:192889
+[    1487ms] [INFO] 2026-07-10T12:32:56.490Z root INFO Changed application state from 'attached_shell' to 'initialized_layout'. @ http://localhost:3771/bundle.js:192889
+[    1657ms] [INFO] 2026-07-10T12:32:56.659Z root INFO [525ef970-361e-47e3-aa2d-19900e9a9a9c] Sync of 97 plugins: 234.0 ms [1.652 s since frontend page start] @ http://localhost:3771/bundle.js:192889
+[    1669ms] [WARNING] 2026-07-10T12:32:56.672Z terminal WARN Failed attaching to terminal id 1351954808, the terminal is most likely gone. Starting up a new terminal instead. @ http://localhost:3771/bundle.js:192889
+[    1752ms] [WARNING] 2026-07-10T12:32:56.755Z root WARN Linked preference "workbench.colorCustomizations" not found. @ http://localhost:3771/bundle.js:192889
+[    1752ms] [WARNING] 2026-07-10T12:32:56.755Z root WARN Linked preference "editor.experimental.preferTreeSitter" not found. @ http://localhost:3771/bundle.js:192889
+[    1884ms] [INFO] 2026-07-10T12:32:56.886Z root INFO [525ef970-361e-47e3-aa2d-19900e9a9a9c] Loading plugin contributions @ http://localhost:3771/bundle.js:192889
+[    1884ms] [WARNING] 2026-07-10T12:32:56.887Z root WARN Trying to register default override for non-existent preference: workbench.editor.restoreViewState @ http://localhost:3771/bundle.js:192889
+[    1884ms] [WARNING] 2026-07-10T12:32:56.887Z root WARN Trying to register default override for non-existent preference: workbench.editor.restoreViewState @ http://localhost:3771/bundle.js:192889
+[    1885ms] [INFO] 2026-07-10T12:32:56.887Z root INFO [525ef970-361e-47e3-aa2d-19900e9a9a9c] Load contributions of 97 plugins: 71.1 ms [1.872 s since frontend page start] @ http://localhost:3771/bundle.js:192889
+[    1886ms] [WARNING] 2026-07-10T12:32:56.888Z root WARN a registered grammar provider for 'source.java' scope is overridden @ http://localhost:3771/bundle.js:192889
+[    1945ms] [WARNING] 2026-07-10T12:32:56.947Z root WARN 'cpp' language is remapped from 'source.cpp.embedded.macro' to 'source.cpp' scope @ http://localhost:3771/bundle.js:192889
+[    1945ms] [WARNING] 2026-07-10T12:32:56.947Z root WARN a registered grammar configuration for 'cpp' language is overridden @ http://localhost:3771/bundle.js:192889
+[    1945ms] [WARNING] 2026-07-10T12:32:56.948Z plugin-ext:PluginContributionHandler WARN [525ef970-361e-47e3-aa2d-19900e9a9a9c][vscode.html]: Language for 'source.smarty' not found. @ http://localhost:3771/bundle.js:192889
+[    1945ms] [WARNING] 2026-07-10T12:32:56.948Z root WARN 'java' language is remapped from 'source.java' to 'source.java' scope @ http://localhost:3771/bundle.js:192889
+[    1945ms] [WARNING] 2026-07-10T12:32:56.948Z root WARN a registered grammar configuration for 'java' language is overridden @ http://localhost:3771/bundle.js:192889
+[    1946ms] [WARNING] 2026-07-10T12:32:56.948Z plugin-ext:PluginContributionHandler WARN [525ef970-361e-47e3-aa2d-19900e9a9a9c][vscode.markdown]: Language for 'meta.embedded.block.vs_net' not found. @ http://localhost:3771/bundle.js:192889
+[    1946ms] [WARNING] 2026-07-10T12:32:56.948Z plugin-ext:PluginContributionHandler WARN [525ef970-361e-47e3-aa2d-19900e9a9a9c][vscode.markdown]: Language for 'meta.embedded.block.dosbatch' not found. @ http://localhost:3771/bundle.js:192889
+[    1946ms] [WARNING] 2026-07-10T12:32:56.948Z plugin-ext:PluginContributionHandler WARN [525ef970-361e-47e3-aa2d-19900e9a9a9c][vscode.markdown]: Language for 'meta.embedded.block.coffee' not found. @ http://localhost:3771/bundle.js:192889
+[    1946ms] [WARNING] 2026-07-10T12:32:56.948Z plugin-ext:PluginContributionHandler WARN [525ef970-361e-47e3-aa2d-19900e9a9a9c][vscode.markdown]: Language for 'meta.embedded.block.objc' not found. @ http://localhost:3771/bundle.js:192889
+[    1946ms] [WARNING] 2026-07-10T12:32:56.948Z plugin-ext:PluginContributionHandler WARN [525ef970-361e-47e3-aa2d-19900e9a9a9c][vscode.markdown]: Language for 'meta.embedded.block.perl6' not found. @ http://localhost:3771/bundle.js:192889
+[    1946ms] [WARNING] 2026-07-10T12:32:56.948Z plugin-ext:PluginContributionHandler WARN [525ef970-361e-47e3-aa2d-19900e9a9a9c][vscode.markdown]: Language for 'meta.embedded.block.scala' not found. @ http://localhost:3771/bundle.js:192889
+[    1946ms] [WARNING] 2026-07-10T12:32:56.948Z root WARN 'php' language is remapped from 'source.php' to 'text.html.php' scope @ http://localhost:3771/bundle.js:192889
+[    1946ms] [WARNING] 2026-07-10T12:32:56.948Z root WARN a registered grammar configuration for 'php' language is overridden @ http://localhost:3771/bundle.js:192889
+[    2338ms] [INFO] 2026-07-10T12:32:57.341Z root INFO Replace loading indicator with ready workbench UI (animation): 841.4 ms [2.333 s since frontend page start] @ http://localhost:3771/bundle.js:192889
+[    2341ms] [INFO] 2026-07-10T12:32:57.344Z root INFO Changed application state from 'initialized_layout' to 'ready'. @ http://localhost:3771/bundle.js:192889
+[    2341ms] [INFO] 2026-07-10T12:32:57.344Z root INFO All frontend contributions settled: 1115.3 ms [2.333 s since frontend page start] @ http://localhost:3771/bundle.js:192889
+[    2594ms] [INFO] 2026-07-10T12:32:57.596Z plugin-host INFO PLUGIN_HOST(16884): PluginManagerExtImpl/init() @ http://localhost:3771/bundle.js:192889
+[    2710ms] [WARNING] 2026-07-10T12:32:57.713Z root WARN Linked preference "debug.node.autoAttach" not found. @ http://localhost:3771/bundle.js:192889
+[    2787ms] [WARNING] 2026-07-10T12:32:57.790Z plugin-manager WARN Unsupported activation events: onProfile, onProfile:github, please open an issue: https://github.com/eclipse-theia/theia/issues/new @ http://localhost:3771/bundle.js:192889
+[    2787ms] [WARNING] 2026-07-10T12:32:57.790Z plugin-manager WARN Unsupported activation events: onOpenExternalUri:http, onOpenExternalUri:https, please open an issue: https://github.com/eclipse-theia/theia/issues/new @ http://localhost:3771/bundle.js:192889
+[    2787ms] [WARNING] 2026-07-10T12:32:57.790Z plugin-manager WARN Unsupported activation events: onWalkthrough:nodejsWelcome, please open an issue: https://github.com/eclipse-theia/theia/issues/new @ http://localhost:3771/bundle.js:192889
+[    2787ms] [WARNING] 2026-07-10T12:32:57.790Z plugin-manager WARN Unsupported activation events: onLanguageModelTool:debug_java_application, please open an issue: https://github.com/eclipse-theia/theia/issues/new @ http://localhost:3771/bundle.js:192889
+[    2787ms] [WARNING] 2026-07-10T12:32:57.790Z plugin-manager WARN Unsupported activation events: onWalkthrough:javaWelcome, please open an issue: https://github.com/eclipse-theia/theia/issues/new @ http://localhost:3771/bundle.js:192889
+[    2787ms] [WARNING] 2026-07-10T12:32:57.790Z plugin-manager WARN Unsupported activation events: onEditSession:file, please open an issue: https://github.com/eclipse-theia/theia/issues/new @ http://localhost:3771/bundle.js:192889
+[    2787ms] [WARNING] 2026-07-10T12:32:57.790Z plugin-manager WARN Unsupported activation events: onTerminalShellIntegration:*, please open an issue: https://github.com/eclipse-theia/theia/issues/new @ http://localhost:3771/bundle.js:192889
+[    2787ms] [WARNING] 2026-07-10T12:32:57.790Z plugin-manager WARN Unsupported activation events: onTunnel, please open an issue: https://github.com/eclipse-theia/theia/issues/new @ http://localhost:3771/bundle.js:192889
+[    3036ms] [INFO] 2026-07-10T12:32:58.039Z root INFO [525ef970-361e-47e3-aa2d-19900e9a9a9c] Starting plugins. @ http://localhost:3771/bundle.js:192889
+[    3190ms] [INFO] 2026-07-10T12:32:58.192Z root INFO [525ef970-361e-47e3-aa2d-19900e9a9a9c] Start of 97 plugins: 1275.0 ms [3.185 s since frontend page start] @ http://localhost:3771/bundle.js:192889
+[  229399ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3771/socket.io/?EIO=4&transport=polling&t=x6r4h4r0:0
+[  234440ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3771/socket.io/?EIO=4&transport=polling&t=x6v0yl3m:0
+[  240219ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3771/socket.io/?EIO=4&transport=polling&t=x6zh55gc:0
+[  247885ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3771/socket.io/?EIO=4&transport=polling&t=x75dynhg:0
+[  260230ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3771/socket.io/?EIO=4&transport=polling&t=x7ex6hzj:0
+[  272561ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3771/socket.io/?EIO=4&transport=polling&t=x7ofngxa:0
+[  284935ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3771/socket.io/?EIO=4&transport=polling&t=x7xyh4xo:0
+[  297291ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3771/socket.io/?EIO=4&transport=polling&t=x87hx1rl:0
+[  309634ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3771/socket.io/?EIO=4&transport=polling&t=x8h1bphh:0
+[  321985ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3771/socket.io/?EIO=4&transport=polling&t=x8qk9tl7:0
+[  334318ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3771/socket.io/?EIO=4&transport=polling&t=x90373r2:0
+[  346659ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3771/socket.io/?EIO=4&transport=polling&t=x99lysf5:0
+[  358992ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3771/socket.io/?EIO=4&transport=polling&t=x9j4k7hd:0
+[  371332ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3771/socket.io/?EIO=4&transport=polling&t=x9sn7ioo:0
+[  383660ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3771/socket.io/?EIO=4&transport=polling&t=xa25tv9z:0
+[  396008ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3771/socket.io/?EIO=4&transport=polling&t=xabo9ehh:0
+[  408338ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3771/socket.io/?EIO=4&transport=polling&t=xal7erzd:0
+[  420689ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3771/socket.io/?EIO=4&transport=polling&t=xaupzs40:0
+[  433033ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3771/socket.io/?EIO=4&transport=polling&t=xb491hcw:0
+[  445346ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3771/socket.io/?EIO=4&transport=polling&t=xbdrqu4w:0
+[  457689ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3771/socket.io/?EIO=4&transport=polling&t=xbna1821:0
+[  470043ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3771/socket.io/?EIO=4&transport=polling&t=xbwsqp0a:0
+[  482378ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3771/socket.io/?EIO=4&transport=polling&t=xc6bwkr6:0
+[  494723ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3771/socket.io/?EIO=4&transport=polling&t=xcfuu65s:0
+[  507058ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3771/socket.io/?EIO=4&transport=polling&t=xcpdcoal:0
+[  519418ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3771/socket.io/?EIO=4&transport=polling&t=xcyw6tk1:0
+[  531754ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3771/socket.io/?EIO=4&transport=polling&t=xd8fgqym:0
+[  544092ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3771/socket.io/?EIO=4&transport=polling&t=xdhxzpuy:0
+[  556430ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3771/socket.io/?EIO=4&transport=polling&t=xdrgt71l:0
+[  568784ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3771/socket.io/?EIO=4&transport=polling&t=xe0zjsxc:0
+[  581125ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3771/socket.io/?EIO=4&transport=polling&t=xeaiuv53:0
+[  593454ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3771/socket.io/?EIO=4&transport=polling&t=xek1gb8p:0
+[  605793ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3771/socket.io/?EIO=4&transport=polling&t=xetk1sc2:0
+[  618151ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3771/socket.io/?EIO=4&transport=polling&t=xf330ysh:0
+[  630494ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3771/socket.io/?EIO=4&transport=polling&t=xfcm0hf2:0
+[  642837ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3771/socket.io/?EIO=4&transport=polling&t=xfm53eu3:0
+[  655172ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3771/socket.io/?EIO=4&transport=polling&t=xfvnq7eb:0
+[  667510ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3771/socket.io/?EIO=4&transport=polling&t=xg56eela:0
+[  679873ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3771/socket.io/?EIO=4&transport=polling&t=xgeoysz5:0

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="446" height="276" viewBox="0 0 446 276">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#16181d"/>
+      <stop offset="1" stop-color="#1c1f2b"/>
+    </linearGradient>
+    <linearGradient id="mark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#9daafc"/>
+      <stop offset="1" stop-color="#6a76e8"/>
+    </linearGradient>
+  </defs>
+  <rect width="446" height="276" fill="url(#bg)"/>
+  <g transform="translate(179, 62)">
+    <rect x="0" y="0" width="88" height="88" rx="20" fill="url(#mark)"/>
+    <path d="M27.5 62.3V25.7h16.9c7.7 0 13.2 4.9 13.2 12.1s-5.5 12.1-13.2 12.1h-7.7v12.4z" fill="#12141c"/>
+    <circle cx="59.4" cy="57.6" r="6.6" fill="#12141c"/>
+  </g>
+  <text x="223" y="188" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="26" font-weight="650" letter-spacing="6" fill="#f2f4f8">PMIDE</text>
+  <text x="223" y="214" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12.5" fill="#9aa1ad">The IDE rebuilt for product managers</text>
+  <text x="223" y="252" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#6b7280">Loading your product workspace…</text>
+</svg>

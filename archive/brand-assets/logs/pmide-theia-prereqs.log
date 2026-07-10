@@ -1,0 +1,112 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20260707220406
+Username: NICK-2025-PC\jnlan
+RunAs User: NICK-2025-PC\jnlan
+Configuration Name: 
+Machine: NICK-2025-PC (Microsoft Windows NT 10.0.26200.0)
+Host Application: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -ExecutionPolicy Bypass -File C:\Users\jnlan\AppData\Local\Temp\claude\s--Vibe-Coding-Folder-PMIDE\936b8963-a9ed-4260-8a53-2ca0c7a80853\scratchpad\pmide-prereqs-admin.ps1
+Process ID: 95444
+PSVersion: 5.1.26100.8737
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.8737
+BuildVersion: 10.0.26100.8737
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Transcript started, output file is S:\pmide-theia-prereqs.log
+=== 1/3 Enable Windows long paths ===
+
+Long paths enabled.
+=== 2/3 Defender exclusions ===
+Add-MpPreference : Operation failed with the following error: 0x800106ba. Operation: MpPreference. Target: 
+ConfigListExtension.
+At C:\Users\jnlan\AppData\Local\Temp\claude\s--Vibe-Coding-Folder-PMIDE\936b8963-a9ed-4260-8a53-2ca0c7a80853\scratchpad\
+pmide-prereqs-admin.ps1:14 char:3
++   Add-MpPreference -ExclusionPath 'S:\pmide-theia'
++   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (MSFT_MpPreference:root\Microsoft\...FT_MpPreference) [Add-MpPreference], 
+CimException
+    + FullyQualifiedErrorId : HRESULT 0x800106ba,Add-MpPreference
+Add-MpPreference : Operation failed with the following error: 0x800106ba. Operation: MpPreference. Target:
+ConfigListExtension.
+At C:\Users\jnlan\AppData\Local\Temp\claude\s--Vibe-Coding-Folder-PMIDE\936b8963-a9ed-4260-8a53-2ca0c7a80853\scratchpad
+\pmide-prereqs-admin.ps1:14 char:3
++   Add-MpPreference -ExclusionPath 'S:\pmide-theia'
++   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (MSFT_MpPreference:root\Microsoft\...FT_MpPreference) [Add-MpPreference],
+   CimException
+    + FullyQualifiedErrorId : HRESULT 0x800106ba,Add-MpPreference
+
+Add-MpPreference : Operation failed with the following error: 0x800106ba
+At C:\Users\jnlan\AppData\Local\Temp\claude\s--Vibe-Coding-Folder-PMIDE\936b8963-a9ed-4260-8a53-2ca0c7a80853\scratchpad\
+pmide-prereqs-admin.ps1:14 char:3
++   Add-MpPreference -ExclusionPath 'S:\pmide-theia'
++   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (MSFT_MpPreference:root\Microsoft\...FT_MpPreference) [Add-MpPreference], 
+CimException
+    + FullyQualifiedErrorId : HRESULT 0x800106ba,Add-MpPreference
+Add-MpPreference : Operation failed with the following error: 0x800106ba
+At C:\Users\jnlan\AppData\Local\Temp\claude\s--Vibe-Coding-Folder-PMIDE\936b8963-a9ed-4260-8a53-2ca0c7a80853\scratchpad
+\pmide-prereqs-admin.ps1:14 char:3
++   Add-MpPreference -ExclusionPath 'S:\pmide-theia'
++   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (MSFT_MpPreference:root\Microsoft\...FT_MpPreference) [Add-MpPreference],
+   CimException
+    + FullyQualifiedErrorId : HRESULT 0x800106ba,Add-MpPreference
+
+Add-MpPreference : Operation failed with the following error: 0x800106ba. Operation: MpPreference. Target: 
+ConfigListExtension.
+At C:\Users\jnlan\AppData\Local\Temp\claude\s--Vibe-Coding-Folder-PMIDE\936b8963-a9ed-4260-8a53-2ca0c7a80853\scratchpad\
+pmide-prereqs-admin.ps1:15 char:3
++   Add-MpPreference -ExclusionPath 'S:\pmide-demo'
++   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (MSFT_MpPreference:root\Microsoft\...FT_MpPreference) [Add-MpPreference], 
+CimException
+    + FullyQualifiedErrorId : HRESULT 0x800106ba,Add-MpPreference
+Add-MpPreference : Operation failed with the following error: 0x800106ba. Operation: MpPreference. Target:
+ConfigListExtension.
+At C:\Users\jnlan\AppData\Local\Temp\claude\s--Vibe-Coding-Folder-PMIDE\936b8963-a9ed-4260-8a53-2ca0c7a80853\scratchpad
+\pmide-prereqs-admin.ps1:15 char:3
++   Add-MpPreference -ExclusionPath 'S:\pmide-demo'
++   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (MSFT_MpPreference:root\Microsoft\...FT_MpPreference) [Add-MpPreference],
+   CimException
+    + FullyQualifiedErrorId : HRESULT 0x800106ba,Add-MpPreference
+
+Add-MpPreference : Operation failed with the following error: 0x800106ba
+At C:\Users\jnlan\AppData\Local\Temp\claude\s--Vibe-Coding-Folder-PMIDE\936b8963-a9ed-4260-8a53-2ca0c7a80853\scratchpad\
+pmide-prereqs-admin.ps1:15 char:3
++   Add-MpPreference -ExclusionPath 'S:\pmide-demo'
++   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (MSFT_MpPreference:root\Microsoft\...FT_MpPreference) [Add-MpPreference], 
+CimException
+    + FullyQualifiedErrorId : HRESULT 0x800106ba,Add-MpPreference
+Add-MpPreference : Operation failed with the following error: 0x800106ba
+At C:\Users\jnlan\AppData\Local\Temp\claude\s--Vibe-Coding-Folder-PMIDE\936b8963-a9ed-4260-8a53-2ca0c7a80853\scratchpad
+\pmide-prereqs-admin.ps1:15 char:3
++   Add-MpPreference -ExclusionPath 'S:\pmide-demo'
++   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (MSFT_MpPreference:root\Microsoft\...FT_MpPreference) [Add-MpPreference],
+   CimException
+    + FullyQualifiedErrorId : HRESULT 0x800106ba,Add-MpPreference
+
+Defender exclusions added.
+=== 3/3 Visual Studio 2022 Build Tools (C++ workload) ===
+Found Visual Studio BuildTools 2022 [Microsoft.VisualStudio.2022.BuildTools] Version 17.14.35
+This application is licensed to you by its owner.
+Microsoft is not responsible for, nor does it grant any licenses to, third-party packages.
+Downloading https://download.visualstudio.microsoft.com/download/pr/2ae938ff-cbb6-4e4d-990c-7794a7a03745/650517f804f6b1f
+c7d1e274202ee43e2d027cbdbf9376a8e94c7c5bb32abfd99/vs_BuildTools.exe
+  ██████████████████████████████  4.25 MB / 4.25 MB
+Successfully verified installer hash
+Starting package install...
+Successfully installed
+winget exit code: 0
+=== DONE ===
+**********************
+Windows PowerShell transcript end
+End time: 20260707220743
+**********************

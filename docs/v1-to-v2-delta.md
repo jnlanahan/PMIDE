@@ -26,7 +26,7 @@ The v2 brief supersedes the v1 requirements set. It is not an incremental revisi
 
 ## What carries over unchanged
 
-- The desktop IDE is built on **Eclipse Theia** (evolving the existing app at `S:\pmide-theia`, not starting fresh).
+- The desktop IDE is built on **Eclipse Theia** (evolving the existing app at `S:\Vibe Coding Folder\pmide-theia`, not starting fresh).
 - **Git as the source of truth** for PM artifacts, with friendly, jargon-free diffs and history.
 - **Human keeps the judgment** — human-triggered, human-reviewed workflows; no autonomous shipping.
 - The target user: PMs in non-tech companies where engineering is walled off.

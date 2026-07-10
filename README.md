@@ -18,7 +18,7 @@ A native desktop IDE built on the Eclipse Theia Platform.
 - **Start Menu / Desktop:** after installation, launch **PMIDE** like any other
   program (Start Menu → PMIDE, or the desktop shortcut).
 - **From this folder:** double-click **`Launch PMIDE.bat`**.
-- **Installer:** `S:\pmide-theia\applications\electron\dist\PMIDESetup.exe`
+- **Installer:** `S:\Vibe Coding Folder\pmide-theia\applications\electron\dist\PMIDESetup.exe`
   (Windows SmartScreen will warn because the binary is unsigned — choose
   "More info → Run anyway").
 
@@ -49,8 +49,8 @@ Enable it: Settings → search "AI features" → enable → add your Anthropic A
 
 | Path | What it is |
 |---|---|
-| `S:\pmide-theia\` | PMIDE source (Theia workspace); see `PMIDE.md` there for developer docs |
-| `S:\pmide-theia\applications\electron\dist\` | Build output: `PMIDESetup.exe` + `win-unpacked\PMIDE.exe` |
+| `S:\Vibe Coding Folder\pmide-theia\` | PMIDE source (Theia workspace); see `PMIDE.md` there for developer docs |
+| `S:\Vibe Coding Folder\pmide-theia\applications\electron\dist\` | Build output: `PMIDESetup.exe` + `win-unpacked\PMIDE.exe` |
 | `%LOCALAPPDATA%\Programs\PMIDE\` | Installed app location |
 | `docs/` | The current v2 vision, delta, and build plan |
 | `archive/requirements-v1/` | The original (obsolete) v1 requirements document set |
