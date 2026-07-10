@@ -2,7 +2,9 @@
 
 > **Date:** 2026-07-08
 > **Status:** Current roadmap for building [build-brief.md](build-brief.md). Grounded in the actual Theia codebase at `S:\Vibe Coding Folder\pmide-theia`.
-> Work happens in the app repo (`S:\Vibe Coding Folder\pmide-theia`); this document is the reference plan. Phase 0 starts when the user kicks it off.
+> Work happens in the app repo (`S:\Vibe Coding Folder\pmide-theia`); this document is the reference plan.
+>
+> **Progress (2026-07-10):** Phase 0 ✅ and the Phase 1 wedge ✅ — engine seam (`PmideAgentService` over the bundled Agent SDK), BM25 space index with `pmide_search`/`pmide_facts` tools, six-surface nav, Ask v0 with citations + drift callouts, Product Space linking, and the PMIDE Light theme — all verified end-to-end (headless engine test 6/6; Playwright UI drive: cited answer, drift flag, citation opens file at line). Still open from Phase 1: local embeddings slice, the router as a repo skill, first-run "Connect Claude" screen, custom icon set. Phases 2–6 not started.
 
 ## Grounding facts (verified in the codebase)
 
