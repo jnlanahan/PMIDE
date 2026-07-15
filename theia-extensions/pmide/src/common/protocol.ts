@@ -28,6 +28,25 @@ export interface SpaceFacts {
     builtAt: string;
 }
 
+/** A markdown document under <productRoot>/specs/**. */
+export interface SpecEntry {
+    /** Repo-relative path, forward slashes (e.g. specs/refund-policy.md). */
+    relPath: string;
+    /** First `# ` heading, or the filename if none. */
+    title: string;
+    /** Last-modified time, ISO. */
+    modified: string;
+}
+
+/** One saved version of a spec (a commit touching the file). */
+export interface SpecVersion {
+    sha: string;
+    subject: string;
+    author: string;
+    /** Author date, ISO. */
+    date: string;
+}
+
 export interface PmideService {
     /** Run git with the given args in the given repo working tree. */
     git(repoPath: string, args: string[]): Promise<GitResult>;
@@ -43,8 +62,14 @@ export interface PmideService {
     changedFiles(repoPath: string): Promise<ChangedFile[]>;
     /** Stage everything and commit. Returns short sha in stdout on success. */
     commitAll(repoPath: string, message: string): Promise<GitResult>;
+    /** Stage and commit only the given paths. Returns short sha in stdout on success. */
+    commitPaths(repoPath: string, paths: string[], message: string): Promise<GitResult>;
     /** Recent commits on current branch: `sha subject` lines. */
     log(repoPath: string, maxCount: number): Promise<string[]>;
+    /** Commits that touched the given file, newest first (follows renames). */
+    fileLog(repoPath: string, relPath: string, maxCount: number): Promise<SpecVersion[]>;
+    /** Markdown documents under <repoPath>/specs/**, sorted by path. */
+    listSpecs(repoPath: string): Promise<SpecEntry[]>;
     /** What the space index knows about these roots (builds/refreshes it). */
     indexFacts(roots: string[]): Promise<SpaceFacts>;
 }

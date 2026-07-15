@@ -146,6 +146,72 @@
 }
 .pmide-ask .ask-send:hover { background: var(--pm-brand-bright); }
 
+/* ─────── Specs surface ─────── */
+.pmide-side .spec-dirty-tag {
+  font-size: 9.5px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;
+  color: var(--pm-warn); background: var(--pm-warn-bg); padding: 1px 6px; border-radius: 3px;
+}
+.pmide-spec-editor { display: flex; flex-direction: column; height: 100%; overflow: hidden; }
+.pmide-spec-editor .spec-header {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 12px 20px; border-bottom: 1px solid var(--pm-border); flex-shrink: 0;
+}
+.pmide-spec-editor .spec-head-text { min-width: 0; }
+.pmide-spec-editor .spec-title {
+  font-family: var(--pm-voice); font-size: 17px; font-weight: 600; letter-spacing: -0.01em;
+  color: var(--pm-text-bright); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.pmide-spec-editor .spec-meta { font-size: 11.5px; color: var(--pm-text-dim); margin-top: 2px; display: flex; gap: 10px; align-items: baseline; }
+.pmide-spec-editor .spec-meta .spec-dirty-tag {
+  font-size: 9.5px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;
+  color: var(--pm-warn); background: var(--pm-warn-bg); padding: 1px 6px; border-radius: 3px;
+}
+.pmide-spec-editor .spec-review-link { color: var(--pm-brand-bright); cursor: pointer; }
+.pmide-spec-editor .spec-review-link:hover { text-decoration: underline; }
+.pmide-spec-editor .spec-actions { display: flex; gap: 7px; flex-shrink: 0; }
+.pmide-spec-editor .spec-body { flex: 1; display: flex; min-height: 0; }
+.pmide-spec-editor .spec-scroll { flex: 1; overflow-y: auto; min-width: 0; }
+.pmide-spec-editor .spec-history {
+  width: 280px; flex-shrink: 0; overflow-y: auto; border-left: 1px solid var(--pm-border);
+  background: var(--pm-inset); padding: 10px 0 20px;
+}
+.pmide-spec-editor .spec-history-label { padding: 6px 14px 8px; font-size: 10.5px; font-weight: 600; letter-spacing: 0.09em; color: var(--pm-text-dim); text-transform: uppercase; }
+.pmide-spec-editor .spec-version { margin: 5px 10px; padding: 8px 11px; background: var(--pm-card); border: 1px solid var(--pm-border); border-radius: 6px; cursor: pointer; }
+.pmide-spec-editor .spec-version:hover { border-color: var(--pm-brand); }
+.pmide-spec-editor .spec-version.current { border-color: rgba(229,181,103,0.5); background: var(--pm-warn-bg); }
+.pmide-spec-editor .spec-version-subject { font-size: 12.5px; font-weight: 600; color: var(--pm-text-bright); margin-bottom: 3px; }
+.pmide-spec-editor .spec-version-meta { font-size: 11px; color: var(--pm-text-dim); }
+
+/* ─────── editorial reader ─────── */
+.pmide-root article.pmide-reader {
+  max-width: 760px; margin: 0 auto; padding: 44px 56px 90px;
+  font-family: var(--pm-reader); font-size: 15px; line-height: 1.75; color: var(--pm-text-bright);
+}
+.pmide-reader h1, .pmide-reader h2, .pmide-reader h3, .pmide-reader h4 {
+  font-family: var(--pm-voice); font-weight: 600; letter-spacing: -0.01em; line-height: 1.3;
+  margin: 1.6em 0 0.55em; color: var(--pm-text-bright);
+}
+.pmide-reader h1 { font-size: 28px; margin-top: 0.2em; }
+.pmide-reader h2 { font-size: 21px; padding-bottom: 6px; border-bottom: 1px solid var(--pm-border); }
+.pmide-reader h3 { font-size: 17px; }
+.pmide-reader h4 { font-size: 15px; }
+.pmide-reader p { margin: 0.75em 0; }
+.pmide-reader ul, .pmide-reader ol { padding-left: 1.5em; margin: 0.75em 0; }
+.pmide-reader li { margin: 0.3em 0; }
+.pmide-reader blockquote {
+  margin: 1em 0; padding: 4px 18px; border-left: 3px solid var(--pm-brand);
+  color: var(--pm-text-dim); background: var(--pm-brand-bg); border-radius: 0 6px 6px 0;
+}
+.pmide-reader table { border-collapse: collapse; margin: 1em 0; font-size: 13.5px; }
+.pmide-reader th, .pmide-reader td { border: 1px solid var(--pm-border); padding: 6px 12px; text-align: left; }
+.pmide-reader th { background: var(--pm-inset); font-weight: 600; }
+.pmide-reader pre { background: var(--pm-inset); border: 1px solid var(--pm-border); border-radius: 8px; padding: 13px 16px; overflow-x: auto; font-size: 12.5px; line-height: 1.55; }
+.pmide-reader pre code { background: none; padding: 0; color: inherit; }
+.pmide-reader a { color: var(--pm-brand-bright); text-decoration: none; }
+.pmide-reader a:hover { text-decoration: underline; }
+.pmide-reader hr { border: none; border-top: 1px solid var(--pm-border); margin: 2em 0; }
+.pmide-reader img { max-width: 100%; }
+
 /* ─────── Context surface ─────── */
 .pmide-side .ctx-health { display: flex; align-items: center; gap: 7px; padding: 6px 16px; font-size: 12.5px; }
 .pmide-side .ctx-health .dot { width: 8px; height: 8px; border-radius: 50%; }

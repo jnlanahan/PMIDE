@@ -1,7 +1,7 @@
 /********************************************************************************
  * PMIDE surfaces — the six-surface left nav: Home, Ask, Specs, Workflows,
- * Code, Context. Ask and Context are real in Phase 1; Home, Specs,
- * Workflows, and Code are calm placeholders that say what is coming.
+ * Code, Context. Ask, Specs, and Context are real; Home, Workflows, and
+ * Code are calm placeholders that say what is coming.
  * SPDX-License-Identifier: MIT
  ********************************************************************************/
 
@@ -13,6 +13,7 @@ import { PmideService, SpaceFacts } from '../common/protocol';
 import { PmideAgentFrontend } from './pmide-agent-frontend';
 import { PmideAskWidget } from './pmide-ask-widget';
 import { PmideSpaceService } from './pmide-space';
+import { PmideSpecsWidget } from './pmide-specs';
 import { PmideHtmlWidget, esc } from './pmide-widgets';
 
 /* ─────────────────────────── placeholder surfaces ─────────────────────────── */
@@ -45,23 +46,6 @@ export class PmideHomeWidget extends PmidePlaceholderWidget {
         this.title.label = 'Home';
         this.title.caption = 'Home — the PMIDE command center';
         this.title.iconClass = codicon('home');
-        this.title.closable = true;
-    }
-}
-
-@injectable()
-export class PmideSpecsWidget extends PmidePlaceholderWidget {
-    static readonly ID = 'pmide-specs';
-    protected heading = 'Specs';
-    protected body = 'The document workspace: clean editing over markdown in git, with version history as a friendly timeline — no git jargon.';
-    protected phase = 'Coming in Phase 2.';
-    @postConstruct()
-    protected init(): void {
-        super.init();
-        this.id = PmideSpecsWidget.ID;
-        this.title.label = 'Specs';
-        this.title.caption = 'Specs — the document workspace';
-        this.title.iconClass = codicon('book');
         this.title.closable = true;
     }
 }

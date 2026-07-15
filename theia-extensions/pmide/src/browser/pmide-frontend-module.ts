@@ -14,11 +14,12 @@ import { PmideAgentClientImpl, PmideAgentFrontend } from './pmide-agent-frontend
 import { PmideAskWidget } from './pmide-ask-widget';
 import { PmideGitResourceResolver } from './pmide-git-resource';
 import { PmideSpaceService } from './pmide-space';
+import { PmideSpecEditorWidget, PmideSpecsContribution, PmideSpecsFeed, PmideSpecsWidget, SpecEditorOptions } from './pmide-specs';
 import { PmideThemeContribution } from './pmide-theme';
 import {
     PmideAskViewContribution, PmideCodeViewContribution, PmideCodeWidget,
     PmideContextViewContribution, PmideContextWidget, PmideHomeViewContribution,
-    PmideHomeWidget, PmideSpecsViewContribution, PmideSpecsWidget,
+    PmideHomeWidget, PmideSpecsViewContribution,
     PmideSurfacesFrontendContribution, PmideWorkflowsViewContribution, PmideWorkflowsWidget,
 } from './pmide-surfaces';
 
@@ -56,6 +57,21 @@ export default new ContainerModule(bind => {
 
     // Product Space
     bind(PmideSpaceService).toSelf().inSingletonScope();
+
+    // Specs: shared change feed, per-document reader widgets, commands
+    bind(PmideSpecsFeed).toSelf().inSingletonScope();
+    bind(PmideSpecEditorWidget).toSelf();
+    bind(WidgetFactory).toDynamicValue(ctx => ({
+        id: PmideSpecEditorWidget.FACTORY_ID,
+        createWidget: (options: SpecEditorOptions) => {
+            const widget = ctx.container.get(PmideSpecEditorWidget);
+            widget.configure(options);
+            return widget;
+        },
+    })).inSingletonScope();
+    bind(PmideSpecsContribution).toSelf().inSingletonScope();
+    bind(CommandContribution).toService(PmideSpecsContribution);
+    bind(MenuContribution).toService(PmideSpecsContribution);
 
     // The six surfaces
     bindSurface(bind, PmideHomeWidget, PmideHomeViewContribution);

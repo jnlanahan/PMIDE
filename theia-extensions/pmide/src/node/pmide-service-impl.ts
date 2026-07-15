@@ -7,7 +7,7 @@ import { inject, injectable } from '@theia/core/shared/inversify';
 import { spawn } from 'child_process';
 import * as fs from 'fs';
 import * as path from 'path';
-import { ChangedFile, GitResult, PmideService, SpaceFacts } from '../common/protocol';
+import { ChangedFile, GitResult, PmideService, SpaceFacts, SpecEntry, SpecVersion } from '../common/protocol';
 import { PmideSpaceIndex } from './pmide-space-index';
 
 @injectable()
@@ -64,9 +64,17 @@ export class PmideServiceImpl implements PmideService {
         if (r.code !== 0 || !r.stdout) {
             return [];
         }
+        // Note: runGit trims stdout, so the first line may have lost its
+        // leading status space — parse each line by its first whitespace gap.
         return r.stdout.split('\n').filter(l => l.trim()).map(line => {
-            const x = line.slice(0, 2);
-            const file = line.slice(3).trim().replace(/"/g, '');
+            const trimmed = line.trim();
+            const gap = trimmed.search(/\s/);
+            const x = gap > 0 ? trimmed.slice(0, gap) : trimmed;
+            let file = (gap > 0 ? trimmed.slice(gap + 1) : '').trim().replace(/"/g, '');
+            const arrow = file.indexOf(' -> ');
+            if (arrow >= 0) {
+                file = file.slice(arrow + 4);
+            }
             const status: ChangedFile['status'] = x.includes('D') ? 'D' : (x.includes('?') || x.includes('A')) ? 'A' : 'M';
             return { path: file, status };
         });
@@ -88,5 +96,82 @@ export class PmideServiceImpl implements PmideService {
     async log(repoPath: string, maxCount: number): Promise<string[]> {
         const r = await this.runGit(repoPath, ['log', `--max-count=${maxCount}`, '--pretty=%h %s']);
         return r.code === 0 && r.stdout ? r.stdout.split('\n') : [];
+    }
+
+    async commitPaths(repoPath: string, paths: string[], message: string): Promise<GitResult> {
+        if (!paths.length) {
+            return { code: -1, stdout: '', stderr: 'No paths to commit' };
+        }
+        const add = await this.runGit(repoPath, ['add', '--', ...paths]);
+        if (add.code !== 0) {
+            return add;
+        }
+        const commit = await this.runGit(repoPath, ['commit', '-m', message, '--', ...paths]);
+        if (commit.code !== 0) {
+            return commit;
+        }
+        const sha = await this.runGit(repoPath, ['rev-parse', '--short', 'HEAD']);
+        return { code: 0, stdout: sha.stdout, stderr: '' };
+    }
+
+    async fileLog(repoPath: string, relPath: string, maxCount: number): Promise<SpecVersion[]> {
+        const r = await this.runGit(repoPath, [
+            'log', '--follow', `--max-count=${maxCount}`,
+            '--pretty=%H%x1f%s%x1f%an%x1f%aI',
+            '--', relPath.replace(/\\/g, '/'),
+        ]);
+        if (r.code !== 0 || !r.stdout) {
+            return [];
+        }
+        return r.stdout.split('\n').filter(l => l.trim()).map(line => {
+            const [sha, subject, author, date] = line.split('\x1f');
+            return { sha, subject: subject ?? '', author: author ?? '', date: date ?? '' };
+        });
+    }
+
+    async listSpecs(repoPath: string): Promise<SpecEntry[]> {
+        const specsDir = path.join(repoPath, 'specs');
+        const entries: SpecEntry[] = [];
+        const walk = async (dir: string): Promise<void> => {
+            let children: fs.Dirent[];
+            try {
+                children = await fs.promises.readdir(dir, { withFileTypes: true });
+            } catch {
+                return;
+            }
+            for (const child of children) {
+                if (child.name.startsWith('.') || child.name === 'node_modules') {
+                    continue;
+                }
+                const abs = path.join(dir, child.name);
+                if (child.isDirectory()) {
+                    await walk(abs);
+                } else if (child.isFile() && /\.(md|markdown)$/i.test(child.name)) {
+                    const [stat, title] = await Promise.all([
+                        fs.promises.stat(abs),
+                        this.readTitle(abs, child.name),
+                    ]);
+                    entries.push({
+                        relPath: path.relative(repoPath, abs).replace(/\\/g, '/'),
+                        title,
+                        modified: stat.mtime.toISOString(),
+                    });
+                }
+            }
+        };
+        await walk(specsDir);
+        return entries.sort((a, b) => a.relPath.localeCompare(b.relPath));
+    }
+
+    /** First `# ` heading of a markdown file, or the filename without extension. */
+    protected async readTitle(absPath: string, fileName: string): Promise<string> {
+        try {
+            const head = (await fs.promises.readFile(absPath, 'utf8')).slice(0, 4096);
+            const match = /^#\s+(.+)$/m.exec(head);
+            if (match) {
+                return match[1].trim();
+            }
+        } catch { /* unreadable: fall through to filename */ }
+        return fileName.replace(/\.(md|markdown)$/i, '');
     }
 }
