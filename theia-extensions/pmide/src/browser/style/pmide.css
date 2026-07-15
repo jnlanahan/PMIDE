@@ -212,6 +212,12 @@
 .pmide-reader hr { border: none; border-top: 1px solid var(--pm-border); margin: 2em 0; }
 .pmide-reader img { max-width: 100%; }
 
+/* ─────── Home surface ─────── */
+.pmide-side .home-actions { padding: 14px 16px 4px; }
+.pmide-side .home-activity { padding: 5px 16px; }
+.pmide-side .home-activity-subject { font-size: 12px; color: var(--pm-text-bright); line-height: 1.4; }
+.pmide-side .home-activity-meta { font-size: 10.5px; color: var(--pm-text-dim); margin-top: 1px; }
+
 /* ─────── Workflows surface ─────── */
 .pmide-side .wf-template { cursor: default; }
 .pmide-side .wf-template:hover { border-color: var(--pm-border); }

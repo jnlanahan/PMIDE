@@ -13,6 +13,7 @@ import { PMIDE_SERVICE_PATH, PmideService } from '../common/protocol';
 import { PmideAgentClientImpl, PmideAgentFrontend } from './pmide-agent-frontend';
 import { PmideAskWidget } from './pmide-ask-widget';
 import { PmideGitResourceResolver } from './pmide-git-resource';
+import { PmideHomeWidget } from './pmide-home';
 import { bindPmideMode } from './pmide-mode';
 import { PmideSpaceService } from './pmide-space';
 import { PmideSpecEditorWidget, PmideSpecsContribution, PmideSpecsFeed, PmideSpecsWidget, SpecEditorOptions } from './pmide-specs';
@@ -20,7 +21,7 @@ import { PmideThemeContribution } from './pmide-theme';
 import {
     PmideAskViewContribution, PmideCodeViewContribution, PmideCodeWidget,
     PmideContextViewContribution, PmideContextWidget, PmideHomeViewContribution,
-    PmideHomeWidget, PmideSpecsViewContribution,
+    PmideSpecsViewContribution,
     PmideSurfacesFrontendContribution, PmideWorkflowsViewContribution,
 } from './pmide-surfaces';
 import {

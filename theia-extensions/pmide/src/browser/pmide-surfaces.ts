@@ -1,7 +1,7 @@
 /********************************************************************************
  * PMIDE surfaces — the six-surface left nav: Home, Ask, Specs, Workflows,
- * Code, Context. Ask, Specs, Workflows, and Context are real; Home and
- * Code are calm placeholders that say what is coming.
+ * Code, Context. All six are real; this file holds Code, Context, the view
+ * contributions, and startup attachment.
  * SPDX-License-Identifier: MIT
  ********************************************************************************/
 
@@ -12,45 +12,12 @@ import { inject, injectable, postConstruct } from '@theia/core/shared/inversify'
 import { PmideService, SpaceFacts } from '../common/protocol';
 import { PmideAgentFrontend } from './pmide-agent-frontend';
 import { PmideAskWidget } from './pmide-ask-widget';
+import { PmideHomeWidget } from './pmide-home';
 import { ModeCommands, PmideModeService } from './pmide-mode';
 import { PmideSpaceService } from './pmide-space';
 import { PmideSpecsWidget } from './pmide-specs';
 import { PmideHtmlWidget, esc } from './pmide-widgets';
 import { PmideWorkflowsWidget } from './pmide-workflows';
-
-/* ─────────────────────────── placeholder surfaces ─────────────────────────── */
-
-@injectable()
-export abstract class PmidePlaceholderWidget extends PmideHtmlWidget {
-    protected abstract heading: string;
-    protected abstract body: string;
-    protected abstract phase: string;
-
-    protected renderHtml(): string {
-        return `<div class="pmide-placeholder">
-            <div class="ph-title">${esc(this.heading)}</div>
-            <div class="ph-body">${esc(this.body)}</div>
-            <div class="ph-phase">${esc(this.phase)}</div>
-        </div>`;
-    }
-}
-
-@injectable()
-export class PmideHomeWidget extends PmidePlaceholderWidget {
-    static readonly ID = 'pmide-home';
-    protected heading = 'Home';
-    protected body = 'Your command center: what changed, what needs your review, and current priorities — pulled from the space and connected sources.';
-    protected phase = 'Coming in a later phase. Ask is ready today.';
-    @postConstruct()
-    protected init(): void {
-        super.init();
-        this.id = PmideHomeWidget.ID;
-        this.title.label = 'Home';
-        this.title.caption = 'Home — the PMIDE command center';
-        this.title.iconClass = codicon('home');
-        this.title.closable = true;
-    }
-}
 
 @injectable()
 export class PmideCodeWidget extends PmideHtmlWidget {
@@ -246,11 +213,11 @@ export class PmideSurfacesFrontendContribution implements FrontendApplicationCon
         } catch (e) {
             console.error('PMIDE: docking surfaces failed', e);
         }
-        // Once the app is fully ready: restore linked repos and land on Ask.
+        // Once the app is fully ready: restore linked repos and land on Home.
         this.stateService.reachedState('ready').then(async () => {
             try {
                 await this.spaces.restoreLinks();
-                await this.askView.openView({ activate: true });
+                await this.homeView.openView({ activate: true });
             } catch (e) {
                 console.error('PMIDE: post-ready setup failed', e);
             }
