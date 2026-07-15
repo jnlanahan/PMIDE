@@ -13,6 +13,7 @@ import { PMIDE_SERVICE_PATH, PmideService } from '../common/protocol';
 import { PmideAgentClientImpl, PmideAgentFrontend } from './pmide-agent-frontend';
 import { PmideAskWidget } from './pmide-ask-widget';
 import { PmideGitResourceResolver } from './pmide-git-resource';
+import { bindPmideMode } from './pmide-mode';
 import { PmideSpaceService } from './pmide-space';
 import { PmideSpecEditorWidget, PmideSpecsContribution, PmideSpecsFeed, PmideSpecsWidget, SpecEditorOptions } from './pmide-specs';
 import { PmideThemeContribution } from './pmide-theme';
@@ -61,6 +62,9 @@ export default new ContainerModule(bind => {
 
     // Product Space
     bind(PmideSpaceService).toSelf().inSingletonScope();
+
+    // UI modes: reader (calm default) <-> code (full IDE)
+    bindPmideMode(bind);
 
     // Specs: shared change feed, per-document reader widgets, commands
     bind(PmideSpecsFeed).toSelf().inSingletonScope();

@@ -12,6 +12,7 @@ import { inject, injectable, postConstruct } from '@theia/core/shared/inversify'
 import { PmideService, SpaceFacts } from '../common/protocol';
 import { PmideAgentFrontend } from './pmide-agent-frontend';
 import { PmideAskWidget } from './pmide-ask-widget';
+import { ModeCommands, PmideModeService } from './pmide-mode';
 import { PmideSpaceService } from './pmide-space';
 import { PmideSpecsWidget } from './pmide-specs';
 import { PmideHtmlWidget, esc } from './pmide-widgets';
@@ -52,11 +53,11 @@ export class PmideHomeWidget extends PmidePlaceholderWidget {
 }
 
 @injectable()
-export class PmideCodeWidget extends PmidePlaceholderWidget {
+export class PmideCodeWidget extends PmideHtmlWidget {
     static readonly ID = 'pmide-code';
-    protected heading = 'Code';
-    protected body = 'The full IDE: file tree, editor, terminal, diffs, and the developer chat — for prototyping and hands-on work. The Explorer on the left already works today.';
-    protected phase = 'The dedicated Code mode switch comes in Phase 4.';
+
+    @inject(PmideModeService) protected readonly modes: PmideModeService;
+
     @postConstruct()
     protected init(): void {
         super.init();
@@ -65,6 +66,31 @@ export class PmideCodeWidget extends PmidePlaceholderWidget {
         this.title.caption = 'Code — the full IDE surface';
         this.title.iconClass = codicon('code');
         this.title.closable = true;
+        this.addClass('pmide-side');
+        this.toDispose.push(this.modes.onChanged(() => this.refresh()));
+    }
+
+    protected renderHtml(): string {
+        if (this.modes.mode === 'code') {
+            return `<div class="pmide-placeholder">
+                <div class="ph-title">Code mode</div>
+                <div class="ph-body">The full IDE is on: Explorer, Search, Source Control, Debug, and the terminal
+                are in the bar on the left. Everything you do here works on the same repositories the other
+                surfaces read from.</div>
+                <div class="code-actions">
+                    <button class="btn ghost block" data-cmd="terminal:new">New terminal</button>
+                    <button class="btn primary block" data-cmd="${ModeCommands.EXIT_CODE_MODE.id}">Back to reader mode</button>
+                </div>
+            </div>`;
+        }
+        return `<div class="pmide-placeholder">
+            <div class="ph-title">Code</div>
+            <div class="ph-body">The full IDE — file tree, editor, terminal, diffs — for prototyping and
+            hands-on work. It is the same environment underneath; code mode just reveals the deeper controls.</div>
+            <div class="code-actions">
+                <button class="btn primary block" data-cmd="${ModeCommands.ENTER_CODE_MODE.id}">Enter Code mode</button>
+            </div>
+        </div>`;
     }
 }
 
