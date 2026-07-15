@@ -47,6 +47,41 @@ export interface SpecVersion {
     date: string;
 }
 
+/** One input field a workflow package asks for before a run. */
+export interface PackageInput {
+    id: string;
+    label: string;
+    /** 'spec' renders a picker over the product repo's specs. */
+    type: 'text' | 'multiline' | 'spec';
+    hint?: string;
+    optional?: boolean;
+}
+
+/**
+ * A workflow package installed in the product repo at
+ * .pmide/packages/<id>/ — a Claude Code plugin-shaped folder with a
+ * pmide-package.json manifest and a skills/<id>/SKILL.md body.
+ */
+export interface PmidePackage {
+    id: string;
+    name: string;
+    description: string;
+    /** 'new-doc' drafts a new document; 'revise-spec' proposes a revision of an existing one. */
+    mode: 'new-doc' | 'revise-spec';
+    inputs: PackageInput[];
+    /** For new-doc packages: where accepted artifacts are written. */
+    output?: { dir: string; name: string };
+    /** Absolute path of the package folder. */
+    path: string;
+}
+
+/** Baseline package templates shipped with PMIDE (the "use this template" model). */
+export const BASELINE_PACKAGES: ReadonlyArray<{ id: string; name: string; description: string }> = [
+    { id: 'discovery-synthesis', name: 'Discovery synthesis', description: 'Turn raw discovery notes into a themed synthesis with evidence and open questions.' },
+    { id: 'evidence-to-spec', name: 'Evidence to spec', description: 'Fold new evidence into an existing spec as a reviewed revision.' },
+    { id: 'stakeholder-update', name: 'Stakeholder update', description: 'Draft a crisp stakeholder update from the current state of the space.' },
+];
+
 export interface PmideService {
     /** Run git with the given args in the given repo working tree. */
     git(repoPath: string, args: string[]): Promise<GitResult>;
@@ -70,6 +105,12 @@ export interface PmideService {
     fileLog(repoPath: string, relPath: string, maxCount: number): Promise<SpecVersion[]>;
     /** Markdown documents under <repoPath>/specs/**, sorted by path. */
     listSpecs(repoPath: string): Promise<SpecEntry[]>;
+    /** Workflow packages installed under <repoPath>/.pmide/packages. */
+    listPackages(repoPath: string): Promise<PmidePackage[]>;
+    /** Copy a baseline template into .pmide/packages/<id>. Fails if it already exists. */
+    scaffoldPackage(repoPath: string, templateId: string): Promise<PmidePackage>;
+    /** The package's skill body (SKILL.md without frontmatter). */
+    readPackageSkill(repoPath: string, packageId: string): Promise<string>;
     /** What the space index knows about these roots (builds/refreshes it). */
     indexFacts(roots: string[]): Promise<SpaceFacts>;
 }

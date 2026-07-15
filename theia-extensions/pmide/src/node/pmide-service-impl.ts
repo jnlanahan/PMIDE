@@ -7,7 +7,8 @@ import { inject, injectable } from '@theia/core/shared/inversify';
 import { spawn } from 'child_process';
 import * as fs from 'fs';
 import * as path from 'path';
-import { ChangedFile, GitResult, PmideService, SpaceFacts, SpecEntry, SpecVersion } from '../common/protocol';
+import { ChangedFile, GitResult, PmidePackage, PmideService, SpaceFacts, SpecEntry, SpecVersion } from '../common/protocol';
+import { PACKAGE_TEMPLATES } from './pmide-package-templates';
 import { PmideSpaceIndex } from './pmide-space-index';
 
 @injectable()
@@ -161,6 +162,69 @@ export class PmideServiceImpl implements PmideService {
         };
         await walk(specsDir);
         return entries.sort((a, b) => a.relPath.localeCompare(b.relPath));
+    }
+
+    async listPackages(repoPath: string): Promise<PmidePackage[]> {
+        const packagesDir = path.join(repoPath, '.pmide', 'packages');
+        let children: fs.Dirent[];
+        try {
+            children = await fs.promises.readdir(packagesDir, { withFileTypes: true });
+        } catch {
+            return [];
+        }
+        const packages: PmidePackage[] = [];
+        for (const child of children) {
+            if (!child.isDirectory()) {
+                continue;
+            }
+            const folder = path.join(packagesDir, child.name);
+            try {
+                const raw = await fs.promises.readFile(path.join(folder, 'pmide-package.json'), 'utf8');
+                const m = JSON.parse(raw);
+                if (typeof m.id === 'string' && typeof m.name === 'string' && Array.isArray(m.inputs)) {
+                    packages.push({
+                        id: m.id,
+                        name: m.name,
+                        description: typeof m.description === 'string' ? m.description : '',
+                        mode: m.mode === 'revise-spec' ? 'revise-spec' : 'new-doc',
+                        inputs: m.inputs,
+                        output: m.output,
+                        path: folder,
+                    });
+                }
+            } catch { /* not a valid package folder: skip */ }
+        }
+        return packages.sort((a, b) => a.name.localeCompare(b.name));
+    }
+
+    async scaffoldPackage(repoPath: string, templateId: string): Promise<PmidePackage> {
+        const template = PACKAGE_TEMPLATES.find(t => t.id === templateId);
+        if (!template) {
+            throw new Error(`Unknown package template: ${templateId}`);
+        }
+        const folder = path.join(repoPath, '.pmide', 'packages', template.id);
+        if (fs.existsSync(folder)) {
+            throw new Error(`The package "${template.id}" is already in this space.`);
+        }
+        for (const [rel, content] of Object.entries(template.files)) {
+            const abs = path.join(folder, rel);
+            await fs.promises.mkdir(path.dirname(abs), { recursive: true });
+            await fs.promises.writeFile(abs, content, 'utf8');
+        }
+        const packages = await this.listPackages(repoPath);
+        const created = packages.find(p => p.id === template.id);
+        if (!created) {
+            throw new Error(`Scaffolding "${template.id}" did not produce a readable package.`);
+        }
+        return created;
+    }
+
+    async readPackageSkill(repoPath: string, packageId: string): Promise<string> {
+        const skillPath = path.join(repoPath, '.pmide', 'packages', packageId, 'skills', packageId, 'SKILL.md');
+        const raw = await fs.promises.readFile(skillPath, 'utf8');
+        // Strip YAML frontmatter; the runner embeds only the body.
+        const match = /^---\r?\n[\s\S]*?\r?\n---\r?\n/.exec(raw);
+        return match ? raw.slice(match[0].length).trim() : raw.trim();
     }
 
     /** First `# ` heading of a markdown file, or the filename without extension. */

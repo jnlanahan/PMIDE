@@ -20,8 +20,12 @@ import {
     PmideAskViewContribution, PmideCodeViewContribution, PmideCodeWidget,
     PmideContextViewContribution, PmideContextWidget, PmideHomeViewContribution,
     PmideHomeWidget, PmideSpecsViewContribution,
-    PmideSurfacesFrontendContribution, PmideWorkflowsViewContribution, PmideWorkflowsWidget,
+    PmideSurfacesFrontendContribution, PmideWorkflowsViewContribution,
 } from './pmide-surfaces';
+import {
+    PmideWorkflowRunnerWidget, PmideWorkflowsContribution, PmideWorkflowsFeed,
+    PmideWorkflowsWidget, WorkflowRunnerOptions,
+} from './pmide-workflows';
 
 import '../../src/browser/style/pmide.css';
 
@@ -72,6 +76,20 @@ export default new ContainerModule(bind => {
     bind(PmideSpecsContribution).toSelf().inSingletonScope();
     bind(CommandContribution).toService(PmideSpecsContribution);
     bind(MenuContribution).toService(PmideSpecsContribution);
+
+    // Workflows: package feed, per-package runner widgets, commands
+    bind(PmideWorkflowsFeed).toSelf().inSingletonScope();
+    bind(PmideWorkflowRunnerWidget).toSelf();
+    bind(WidgetFactory).toDynamicValue(ctx => ({
+        id: PmideWorkflowRunnerWidget.FACTORY_ID,
+        createWidget: (options: WorkflowRunnerOptions) => {
+            const widget = ctx.container.get(PmideWorkflowRunnerWidget);
+            widget.configure(options);
+            return widget;
+        },
+    })).inSingletonScope();
+    bind(PmideWorkflowsContribution).toSelf().inSingletonScope();
+    bind(CommandContribution).toService(PmideWorkflowsContribution);
 
     // The six surfaces
     bindSurface(bind, PmideHomeWidget, PmideHomeViewContribution);

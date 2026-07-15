@@ -1,6 +1,6 @@
 /********************************************************************************
  * PMIDE surfaces — the six-surface left nav: Home, Ask, Specs, Workflows,
- * Code, Context. Ask, Specs, and Context are real; Home, Workflows, and
+ * Code, Context. Ask, Specs, Workflows, and Context are real; Home and
  * Code are calm placeholders that say what is coming.
  * SPDX-License-Identifier: MIT
  ********************************************************************************/
@@ -15,6 +15,7 @@ import { PmideAskWidget } from './pmide-ask-widget';
 import { PmideSpaceService } from './pmide-space';
 import { PmideSpecsWidget } from './pmide-specs';
 import { PmideHtmlWidget, esc } from './pmide-widgets';
+import { PmideWorkflowsWidget } from './pmide-workflows';
 
 /* ─────────────────────────── placeholder surfaces ─────────────────────────── */
 
@@ -46,23 +47,6 @@ export class PmideHomeWidget extends PmidePlaceholderWidget {
         this.title.label = 'Home';
         this.title.caption = 'Home — the PMIDE command center';
         this.title.iconClass = codicon('home');
-        this.title.closable = true;
-    }
-}
-
-@injectable()
-export class PmideWorkflowsWidget extends PmidePlaceholderWidget {
-    static readonly ID = 'pmide-workflows';
-    protected heading = 'Workflows';
-    protected body = 'The library of packages and the runner for AI-embedded workflows — discovery synthesis, evidence-to-spec, stakeholder updates. You trigger, you review.';
-    protected phase = 'Coming in Phase 3.';
-    @postConstruct()
-    protected init(): void {
-        super.init();
-        this.id = PmideWorkflowsWidget.ID;
-        this.title.label = 'Workflows';
-        this.title.caption = 'Workflows — packages and runs';
-        this.title.iconClass = codicon('checklist');
         this.title.closable = true;
     }
 }
