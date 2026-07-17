@@ -127,6 +127,11 @@ export class PmideHomeWidget extends PmideHtmlWidget {
             : this.engineOk ? 'Claude engine ready' : 'Claude engine unavailable';
         const engineCls = this.engineOk ? 'ok' : 'bad';
         parts.push(`<div class="ctx-health ${engineCls}"><span class="dot"></span>${esc(engine)}</div>`);
+        if (this.engineOk === false) {
+            parts.push(`<div class="ctx-note">PMIDE ships with the Claude engine, but it needs a signed-in Claude
+                account on this computer. Install Claude Code and run <code>claude</code> once in a terminal to sign
+                in, then restart PMIDE. Ask, version notes, and workflows all come back with it.</div>`);
+        }
         if (this.facts) {
             const repoNote = roots.length === 1 ? '1 repository' : `${roots.length} repositories`;
             parts.push(`<div class="ctx-note">${esc(repoNote)} linked — ${this.facts.documents} documents,

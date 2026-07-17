@@ -37,13 +37,17 @@ export function renderWhatIs(windowService: WindowService): React.ReactNode {
             The IDE rebuilt for product managers
         </h3>
         <div>
-            PMIDE puts product managers, engineers, and AI agents in the same repository.
-            Manage governed context, generate agent-ready Work Packages, create reusable skills,
-            work safely on draft branches, and review product intent — all inside a real IDE.
+            PMIDE sits over your team&apos;s repositories and becomes the place PM work happens:
+            understanding the product by asking, writing version-correct specs, and running
+            AI-embedded workflows — all in one calm environment with a full IDE underneath.
         </div>
         <div>
-            The core value is not that PMs can code. It is that PMs can manage the context and
-            agentic work system that increasingly determines what code gets produced.
+            Six surfaces in the left bar: <span className='gs-text-bold'>Home</span> (what needs you),{' '}
+            <span className='gs-text-bold'>Ask</span> (plain-language answers with sources),{' '}
+            <span className='gs-text-bold'>Specs</span> (the document workspace),{' '}
+            <span className='gs-text-bold'>Workflows</span> (packages you trigger and review),{' '}
+            <span className='gs-text-bold'>Code</span> (the full IDE, one click away), and{' '}
+            <span className='gs-text-bold'>Context</span> (linked repos and health).
         </div>
     </div>;
 }
@@ -51,16 +55,12 @@ export function renderWhatIs(windowService: WindowService): React.ReactNode {
 export function renderExtendingCustomizing(windowService: WindowService): React.ReactNode {
     return <div className='gs-section'>
         <h3 className='gs-section-header'>
-            The golden flow (Demo Mode)
+            Ask, and see the sources
         </h3>
         <div>
-            Planning session → context update → safe draft branch → skill creation → Work Package →
-            agent routing → code change → Product Intent Review → governed delivery.
-        </div>
-        <div>
-            The scripted walkthrough is <span className='gs-text-bold'>off by default</span>. Run
-            <code> PMIDE: Enable Demo Mode</code> from the command palette (F1) or the PMIDE menu to
-            bootstrap the demo workspace and walk the full flow. <code>PMIDE: Disable Demo Mode</code> turns it back off.
+            Ask answers questions about your product from the actual code and current specs, in
+            plain language, with citations you can open at the exact line. When the documentation
+            and the code disagree, Ask says so instead of silently picking a side.
         </div>
     </div>;
 }
@@ -68,12 +68,12 @@ export function renderExtendingCustomizing(windowService: WindowService): React.
 export function renderSupport(windowService: WindowService): React.ReactNode {
     return <div className='gs-section'>
         <h3 className='gs-section-header'>
-            Safe by default
+            Version-correct by default
         </h3>
         <div>
-            You are always shown which branch you are on. Nothing changes in the shared product
-            until a safe draft branch is reviewed and approved. High-risk context, skills with
-            scripts, and agent runs all require explicit approval.
+            Specs are markdown in git, but you never see git jargon: history is a friendly
+            timeline, changes are readable diffs, and &quot;Save version&quot; records a
+            plain-language note drafted for you and reviewed by you.
         </div>
     </div>;
 }
@@ -81,11 +81,12 @@ export function renderSupport(windowService: WindowService): React.ReactNode {
 export function renderTickets(windowService: WindowService): React.ReactNode {
     return <div className='gs-section'>
         <h3 className='gs-section-header'>
-            Agents are governed teammates
+            You trigger, you review
         </h3>
         <div>
-            Every agent run records who initiated it, the context it saw, the skill it used, and
-            what changed — traceable from planning decision to pull request.
+            Workflows do the labor — discovery synthesis, folding evidence into a spec,
+            stakeholder updates — grounded in your repositories and running read-only.
+            Nothing lands until you review the draft and accept it.
         </div>
     </div>;
 }
@@ -108,12 +109,13 @@ export function renderSourceCode(windowService: WindowService): React.ReactNode 
 export function renderDocumentation(windowService: WindowService): React.ReactNode {
     return <div className='gs-section'>
         <h3 className='gs-section-header'>
-            Context is the product artifact
+            A Product Space is just your repos
         </h3>
         <div>
-            The Context Library treats business rules, domain glossaries, compliance rules, and
-            release constraints as version-controlled, owned, and reviewed assets — the inputs
-            that make agent output trustworthy.
+            Open your product folder, then link the code repositories next to it from the Context
+            surface. Ask searches across all of them; links are recorded in the product repo so
+            the space comes back on every open. The search index is a local, rebuildable cache —
+            never committed.
         </div>
     </div>;
 }
@@ -121,11 +123,12 @@ export function renderDocumentation(windowService: WindowService): React.ReactNo
 export function renderCollaboration(windowService: WindowService): React.ReactNode {
     return <div className='gs-section'>
         <h3 className='gs-section-header'>
-            Product and engineering, same repo
+            Depth when you want it
         </h3>
         <div>
-            PMs review product intent. Engineers review code. Both happen on every proposed
-            change, and neither bypasses the other.
+            Reader mode keeps the surface calm. Code mode — one click on the Code surface — reveals
+            the full IDE: file tree, terminal, source control, debugging, and VS Code extensions
+            from Open VSX. Same environment, same repositories, nothing to reload.
         </div>
     </div>;
 }
@@ -136,11 +139,11 @@ export function renderDownloads(): React.ReactNode {
             Getting started
         </h3>
         <div className='gs-action-container'>
-            Open any folder to work normally — PMIDE is a full IDE with a real terminal, git,
-            debugging, and VS Code extensions from Open VSX. When you want the guided product-management
-            walkthrough, enable Demo Mode: it creates the <code>enterprise-sample-app</code> demo
-            repository (governed context, an approved skill, planning notes ready to import) in your
-            home folder and opens it.
+            Open your product folder (or any folder — a <code>specs/</code> directory is created
+            the first time you write a document). Home shows what needs your attention; Ask answers
+            your first question; the Workflows surface has three packages ready to add from
+            templates. PMIDE uses the Claude engine bundled with the app — the Context surface
+            shows whether it is connected.
         </div>
     </div>;
 }
